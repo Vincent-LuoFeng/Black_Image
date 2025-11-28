@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Image | Free Pure Black Screen Generator</title>
+  <meta name="description" content="Black Image is the fastest way to generate and download pure black backgrounds in 480p, 720p, 1080p, 2K, 4K, 8K or custom sizes. Preview every aspect ratio, export crisp PNG files, and use them for design, video, photography, UI, streaming, and SEO-ready projects." />
+  <meta name="keywords" content="Black Image, black image download, pure black background, black wallpaper generator, black png 4k, black image 1080p, free black screen, black background for video" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 1200px;
+      --accent: #3456ff;
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 48px 24px 80px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-top: 8px;
+      color: var(--subtext);
+    }
+
+    .hero-lede {
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .preview-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 960px) minmax(220px, 1fr);
+      gap: 32px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .preview-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .preview-box {
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background-image: linear-gradient(45deg, #dfe3eb 25%, transparent 25%),
+        linear-gradient(-45deg, #dfe3eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #dfe3eb 75%),
+        linear-gradient(-45deg, transparent 75%, #dfe3eb 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .preview-black {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background: #000;
+      border-radius: 6px;
+      transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+    }
+
+    .controls form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .resolution-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .resolution-options label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: border 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .resolution-options input[type="radio"] {
+      accent-color: var(--accent);
+    }
+
+    .resolution-options input:checked + span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .custom-inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      transition: opacity 0.2s ease;
+    }
+
+    .custom-inputs.disabled {
+      opacity: 0.5;
+    }
+
+    .custom-inputs label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .custom-inputs input {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .custom-inputs input[readonly] {
+      background: #f3f4f6;
+      color: var(--subtext);
+      cursor: not-allowed;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+      color: var(--subtext);
+      font-size: 14px;
+    }
+
+    .download-btn {
+      min-width: 260px;
+      padding: 14px;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 25px rgba(52, 86, 255, 0.35);
+    }
+
+    .grid-two {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .reason-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 16px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      background: #fff;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    footer {
+      padding: 32px 24px;
+      background: #0b0f1c;
+      color: #cbd5f5;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: #cbd5f5;
+      text-decoration: none;
+    }
+
+    .language-hint {
+      margin-left: auto;
+      font-size: 14px;
+      color: var(--subtext);
+    }
+
+    @media (max-width: 1024px) {
+      .preview-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 28px;
+      }
+
+      .preview-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div data-i18n="brand.name">Black Image</div>
+      <div class="language-hint" data-i18n="ui.languageHint">EN · Future multi-language ready</div>
+    </div>
+  </header>
+  <main>
+    <section id="generator">
+      <h1 data-i18n="hero.title">Black Image Generator</h1>
+      <p class="hero-lede" data-i18n="hero.subtitle">
+        Choose the resolution you need, preview instantly, and download a studio-grade black background with a single click.
+      </p>
+      <div class="preview-panel">
+        <div class="preview-stack">
+          <div class="preview-box" aria-live="polite">
+            <div class="preview-black" id="previewBlack"></div>
+          </div>
+          <button type="button" class="download-btn" id="downloadBtn" data-i18n="hero.download">
+            Download Black Image
+          </button>
+        </div>
+        <div class="controls">
+          <form id="resolutionForm">
+            <div class="resolution-options" role="radiogroup" aria-label="Available resolutions">
+              <label>
+                <input type="radio" name="resolution" value="640x480" />
+                <span>480p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="1280x720" />
+                <span>720p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="1920x1080" checked />
+                <span>1080p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="2560x1440" />
+                <span>2K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="4096x2160" />
+                <span>4K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="7680x4320" />
+                <span>8K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="custom" id="customRadio" />
+                <span>Custom</span>
+              </label>
+            </div>
+            <div class="custom-inputs" id="customInputs">
+              <label>
+                <span>Width (px)</span>
+                <input type="number" id="customWidth" min="16" max="12000" placeholder="e.g. 3000" />
+              </label>
+              <label>
+                <span>Height (px)</span>
+                <input type="number" id="customHeight" min="16" max="12000" placeholder="e.g. 2000" />
+              </label>
+            </div>
+            <div class="meta-row">
+              <span id="ratioLabel">Aspect ratio: 16:9</span>
+              <span id="pixelCount">Pixels: 2,073,600</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases">
+      <h2 data-i18n="usecases.title">Why creators keep a black image handy</h2>
+      <p data-i18n="usecases.subtitle">A pure black canvas is the universal filler: fast brand mockups, clean device frames, testing overlays, cinematic cuts, and more.</p>
+      <div class="grid-two">
+        <article class="reason-card" data-i18n="usecases.card1">
+          <h3>Content teams</h3>
+          <p>Use black plates for lower-thirds, title cards, shorts transitions, or to silence a frame during edits.</p>
+        </article>
+        <article class="reason-card" data-i18n="usecases.card2">
+          <h3>Developers</h3>
+          <p>Ship placeholder assets for splash screens, OLED burn-in tests, and dark-mode QA without blocking on design.</p>
+        </article>
+        <article class="reason-card" data-i18n="usecases.card3">
+          <h3>Photographers</h3>
+          <p>Load black backgrounds into light tables, compare exposure, or prep digital matte shots for composites.</p>
+        </article>
+        <article class="reason-card" data-i18n="usecases.card4">
+          <h3>Live producers</h3>
+          <p>Drop an all-black slide between speaker decks, fade to black in streaming software, or capture a clean cut.</p>
+        </article>
+        <article class="reason-card" data-i18n="usecases.card5">
+          <h3>Educators</h3>
+          <p>Pause a presentation with a black frame to regain focus, hide spoilers, or create suspense before reveals.</p>
+        </article>
+        <article class="reason-card" data-i18n="usecases.card6">
+          <h3>Accessibility &amp; UX</h3>
+          <p>Test dark-surround UI, calibrate contrast ratios, and prototype distraction-free onboarding steps.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 data-i18n="faq.title">FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary data-i18n="faq.q1">Is the download really free?</summary>
+          <p data-i18n="faq.a1">Yes. All black image files are generated locally in your browser. There are no credits, accounts, or hidden costs.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2">What file format do I get?</summary>
+          <p data-i18n="faq.a2">Downloads are standard PNG files for lossless quality. You can convert them to JPG or WebP using any editor if needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3">How accurate is the color?</summary>
+          <p data-i18n="faq.a3">We generate a pure #000000 fill without compression, so the result is true black. Your display calibration may influence what you see, but the file remains pure black.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4">Can I automate downloads?</summary>
+          <p data-i18n="faq.a4">Future API access is on the roadmap. For now you can script downloads by calling the generator from headless browsers or use the open-source code.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span data-i18n="footer.brand">Black Image</span>
+      <div class="footer-links">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.terms">User Agreement</a>
+      </div>
+      <small>&copy; <span id="year"></span> Black Image</small>
+    </div>
+  </footer>
+
+  <script>
+    const previewBoxWidth = 960;
+    const previewBoxHeight = 540;
+    const preview = document.getElementById('previewBlack');
+    const form = document.getElementById('resolutionForm');
+    const ratioLabel = document.getElementById('ratioLabel');
+    const pixelCount = document.getElementById('pixelCount');
+    const customInputs = document.getElementById('customInputs');
+    const customWidth = document.getElementById('customWidth');
+    const customHeight = document.getElementById('customHeight');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const yearSpan = document.getElementById('year');
+
+    const formatter = new Intl.NumberFormat('en-US');
+    const customInputsWrapper = customInputs;
+
+    function parseResolution(value) {
+      if (value === 'custom') {
+        const width = Number(customWidth.value);
+        const height = Number(customHeight.value);
+        return width > 0 && height > 0 ? { width, height } : null;
+      }
+      const [width, height] = value.split('x').map(Number);
+      return { width, height };
+    }
+
+    function updatePreview() {
+      const selected = form.resolution.value;
+      const size = parseResolution(selected);
+
+      if (!size) {
+        preview.style.width = '0px';
+        preview.style.height = '0px';
+        ratioLabel.textContent = 'Aspect ratio: —';
+        pixelCount.textContent = 'Pixels: —';
+        downloadBtn.disabled = true;
+        downloadBtn.style.opacity = 0.6;
+        return;
+      }
+
+      downloadBtn.disabled = false;
+      downloadBtn.style.opacity = 1;
+
+      const { width, height } = size;
+      const ratio = (width / height).toFixed(3);
+      const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+      const divisor = gcd(width, height);
+      const normalized = `${Math.round(width / divisor)}:${Math.round(height / divisor)}`;
+      ratioLabel.textContent = `Aspect ratio: ${normalized} (${ratio})`;
+      pixelCount.textContent = `Pixels: ${formatter.format(width * height)}`;
+
+      const boxRatio = previewBoxWidth / previewBoxHeight;
+      const targetRatio = width / height;
+
+      let displayWidth = previewBoxWidth;
+      let displayHeight = previewBoxHeight;
+
+      if (targetRatio > boxRatio) {
+        displayWidth = previewBoxWidth;
+        displayHeight = previewBoxWidth / targetRatio;
+      } else {
+        displayHeight = previewBoxHeight;
+        displayWidth = previewBoxHeight * targetRatio;
+      }
+
+      preview.style.width = `${displayWidth}px`;
+      preview.style.height = `${displayHeight}px`;
+    }
+
+    function toggleInputsState(isCustom) {
+      customInputsWrapper.classList.toggle('disabled', !isCustom);
+      customWidth.readOnly = !isCustom;
+      customHeight.readOnly = !isCustom;
+    }
+
+    form.addEventListener('change', (event) => {
+      const value = form.resolution.value;
+      const isCustom = value === 'custom';
+      toggleInputsState(isCustom);
+      if (!isCustom) {
+        const size = parseResolution(value);
+        if (size) {
+          customWidth.value = size.width;
+          customHeight.value = size.height;
+        }
+      }
+      updatePreview();
+    });
+
+    customWidth.addEventListener('input', updatePreview);
+    customHeight.addEventListener('input', updatePreview);
+
+    downloadBtn.addEventListener('click', async () => {
+      const size = parseResolution(form.resolution.value);
+      if (!size) return;
+      const { width, height } = size;
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+      const link = document.createElement('a');
+      link.download = `black-image-${width}x${height}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    function initializeDefaults() {
+      toggleInputsState(false);
+      customWidth.value = 1920;
+      customHeight.value = 1080;
+    }
+
+    yearSpan.textContent = new Date().getFullYear();
+    initializeDefaults();
+    updatePreview();
+  </script>
+</body>
+</html>
