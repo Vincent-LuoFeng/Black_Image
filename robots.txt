@@ -1,0 +1,7 @@
+User-agent: *
+allow: /
+Disallow: /privacy-policy.html
+Disallow: /user-agreement.html
+
+
+ 

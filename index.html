@@ -7,6 +7,12 @@
   <title>Black Image | Free Pure Black Screen Generator</title>
   <meta name="description" content="Black Image is the fastest way to generate and download pure black backgrounds in 480p, 720p, 1080p, 2K, 4K, 8K or custom sizes. Preview every aspect ratio, export crisp PNG files, and use them for design, video, photography, UI, streaming, and SEO-ready projects." />
   <meta name="keywords" content="Black Image, black image download, pure black background, black wallpaper generator, black png 4k, black image 1080p, free black screen, black background for video" />
+  <link rel="canonical" href="https://blackimage.online/" />
+  <meta property="og:title" content="Black Image | Free Pure Black Screen Generator" />
+  <meta property="og:description" content="Black Image is the fastest way to generate and download pure black backgrounds in 480p, 720p, 1080p, 2K, 4K, 8K or custom sizes." />
+  <meta property="og:url" content="https://blackimage.online/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -51,6 +57,18 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 600;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
 
     main {
@@ -346,7 +364,10 @@
 <body>
   <header>
     <div class="nav">
-      <div data-i18n="brand.name">Black Image</div>
+      <div class="brand">
+        <img src="pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
+        <span data-i18n="brand.name">Black Image</span>
+      </div>
       <div class="language-switch">
         <label for="languageSelect" data-i18n="ui.languageLabel">Language</label>
         <select id="languageSelect" class="language-select" aria-label="Language selector">
@@ -367,7 +388,7 @@
             <div class="preview-black" id="previewBlack"></div>
           </div>
           <button type="button" class="download-btn" id="downloadBtn" data-i18n="hero.download">
-            Download Black Image
+            Download Image
           </button>
         </div>
         <div class="controls">
@@ -499,8 +520,8 @@
     <div class="footer-inner">
       <span data-i18n="footer.brand">Black Image</span>
       <div class="footer-links">
-        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="#" data-i18n="footer.terms">User Agreement</a>
+        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="user-agreement.html" data-i18n="footer.terms">User Agreement</a>
       </div>
       <small>&copy; <span id="year"></span> Black Image</small>
     </div>
