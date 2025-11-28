@@ -216,17 +216,35 @@
       box-shadow: 0 15px 25px rgba(52, 86, 255, 0.35);
     }
 
-    .grid-two {
-      display: grid;
+    .usecase-stack {
+      display: flex;
+      flex-direction: column;
       gap: 24px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 
-    .reason-card {
-      padding: 18px;
+    .usecase-block {
+      padding: 24px;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       background: #fff;
+    }
+
+    .usecase-block h3 {
+      margin-bottom: 8px;
+    }
+
+    .usecase-block p {
+      margin-bottom: 12px;
+    }
+
+    .usecase-block ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--subtext);
+    }
+
+    .usecase-block li + li {
+      margin-top: 6px;
     }
 
     .faq-item + .faq-item {
@@ -273,10 +291,34 @@
       text-decoration: none;
     }
 
-    .language-hint {
+    .language-switch {
       margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 14px;
       color: var(--subtext);
+    }
+
+    .language-switch label {
+      font-weight: 500;
+    }
+
+    .language-select {
+      padding: 6px 28px 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      appearance: none;
+      position: relative;
+      background-image: linear-gradient(45deg, transparent 50%, var(--subtext) 50%), linear-gradient(135deg, var(--subtext) 50%, transparent 50%);
+      background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
 
     @media (max-width: 1024px) {
@@ -305,7 +347,12 @@
   <header>
     <div class="nav">
       <div data-i18n="brand.name">Black Image</div>
-      <div class="language-hint" data-i18n="ui.languageHint">EN · Future multi-language ready</div>
+      <div class="language-switch">
+        <label for="languageSelect" data-i18n="ui.languageLabel">Language</label>
+        <select id="languageSelect" class="language-select" aria-label="Language selector">
+          <option value="en" selected>🇺🇸 EN</option>
+        </select>
+      </div>
     </div>
   </header>
   <main>
@@ -376,31 +423,52 @@
 
     <section id="use-cases">
       <h2 data-i18n="usecases.title">Why creators keep a black image handy</h2>
-      <p data-i18n="usecases.subtitle">A pure black canvas is the universal filler: fast brand mockups, clean device frames, testing overlays, cinematic cuts, and more.</p>
-      <div class="grid-two">
-        <article class="reason-card" data-i18n="usecases.card1">
-          <h3>Content teams</h3>
-          <p>Use black plates for lower-thirds, title cards, shorts transitions, or to silence a frame during edits.</p>
+      <p data-i18n="usecases.subtitle">A pure Black Image asset helps teams move faster: it delivers instant contrast, polished transitions, and reliable placeholders for any pipeline.</p>
+      <div class="usecase-stack">
+        <article class="usecase-block" data-i18n="usecases.card1">
+          <h3>Video editors &amp; motion studios</h3>
+          <p>Drop a black plate between clips, create cinematic fades, or export silent frames for platform-specific intro/outro requirements.</p>
+          <ul>
+            <li>Hide jump cuts or resync VO without rebuilding the edit.</li>
+            <li>Use pure black in Premiere, Final Cut, CapCut, or Resolve timelines to test subtitles and lower-thirds.</li>
+            <li>Export UHD or 8K plates for LED walls and virtual production volumes.</li>
+          </ul>
         </article>
-        <article class="reason-card" data-i18n="usecases.card2">
-          <h3>Developers</h3>
-          <p>Ship placeholder assets for splash screens, OLED burn-in tests, and dark-mode QA without blocking on design.</p>
+        <article class="usecase-block" data-i18n="usecases.card2">
+          <h3>Designers, product teams, &amp; developers</h3>
+          <p>Black Image doubles as a neutral background for mockups, splash screens, OLED burn-in tests, and dark-mode QA sessions.</p>
+          <ul>
+            <li>Check icon contrast and typography legibility in Figma, Sketch, or XD.</li>
+            <li>Load black placeholders in mobile apps while real artwork is in production.</li>
+            <li>Automate device calibration scripts with programmatic PNG downloads.</li>
+          </ul>
         </article>
-        <article class="reason-card" data-i18n="usecases.card3">
-          <h3>Photographers</h3>
-          <p>Load black backgrounds into light tables, compare exposure, or prep digital matte shots for composites.</p>
+        <article class="usecase-block" data-i18n="usecases.card3">
+          <h3>Photographers, filmmakers, &amp; lighting teams</h3>
+          <p>Carry a digital black background to benchmark exposure, isolate reflections, or prep matte-painting elements for compositing.</p>
+          <ul>
+            <li>Use tablets displaying a black screen to block stray light on set.</li>
+            <li>Print high-contrast reference cards for product shoots and jewelry photography.</li>
+            <li>Feed black PNGs into light meters or LUT calibration workflows.</li>
+          </ul>
         </article>
-        <article class="reason-card" data-i18n="usecases.card4">
-          <h3>Live producers</h3>
-          <p>Drop an all-black slide between speaker decks, fade to black in streaming software, or capture a clean cut.</p>
+        <article class="usecase-block" data-i18n="usecases.card4">
+          <h3>Live producers, educators, &amp; speakers</h3>
+          <p>Keep attention high by cutting to black between slides, hiding spoilers, or pausing a livestream without a messy desktop.</p>
+          <ul>
+            <li>OBS / Streamlabs scenes can switch to a full-black slide in one click.</li>
+            <li>Trainers pause presentations to reset the room or create suspense.</li>
+            <li>Churches, conferences, and esports broadcasts rely on black interstitials for clean transitions.</li>
+          </ul>
         </article>
-        <article class="reason-card" data-i18n="usecases.card5">
-          <h3>Educators</h3>
-          <p>Pause a presentation with a black frame to regain focus, hide spoilers, or create suspense before reveals.</p>
-        </article>
-        <article class="reason-card" data-i18n="usecases.card6">
-          <h3>Accessibility &amp; UX</h3>
-          <p>Test dark-surround UI, calibrate contrast ratios, and prototype distraction-free onboarding steps.</p>
+        <article class="usecase-block" data-i18n="usecases.card5">
+          <h3>Accessibility, QA, &amp; marketing teams</h3>
+          <p>Black Image files help audit contrast, run brand-safe experiments, and fill CMS slots when creative is still in review.</p>
+          <ul>
+            <li>Test WCAG-compliant overlays on a neutral dark surface.</li>
+            <li>Publish SEO landing pages with black hero placeholders until final assets arrive.</li>
+            <li>Simulate “screen off” states for hardware demos or retail signage.</li>
+          </ul>
         </article>
       </div>
     </section>
