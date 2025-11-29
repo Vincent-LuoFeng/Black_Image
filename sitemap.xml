@@ -6,17 +6,5 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://blackimage.online/privacy-policy.html</loc>
-    <lastmod>2025-11-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://blackimage.online/user-agreement.html</loc>
-    <lastmod>2025-11-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
 </urlset>
 
