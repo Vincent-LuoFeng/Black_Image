@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Black Image | Free Pure Black Screen Generator</title>
-  <meta name="description" content="Black Image is the fastest way to generate and download pure black backgrounds in 480p, 720p, 1080p, 2K, 4K, 8K or custom sizes. Preview every aspect ratio, export crisp PNG files, and use them for design, video, photography, UI, streaming, and SEO-ready projects." />
+  <meta name="description" content="Black Image - 100% Free Forever! Download pure black image backgrounds instantly, no login required. Black Image generator supports all sizes: 480p, 720p, 1080p, 2K, 4K, 8K and custom dimensions. Get your Black Image PNG files now!" />
   <meta name="keywords" content="Black Image, black image download, pure black background, black wallpaper generator, black png 4k, black image 1080p, free black screen, black background for video" />
   <link rel="canonical" href="https://blackimage.online/" />
   <meta property="og:title" content="Black Image | Free Pure Black Screen Generator" />
-  <meta property="og:description" content="Black Image is the fastest way to generate and download pure black backgrounds in 480p, 720p, 1080p, 2K, 4K, 8K or custom sizes." />
+  <meta property="og:description" content="Black Image - 100% Free Forever! Download pure black image backgrounds instantly, no login required. Black Image generator supports all sizes: 480p, 720p, 1080p, 2K, 4K, 8K and custom dimensions. Get your Black Image PNG files now!" />
   <meta property="og:url" content="https://blackimage.online/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -311,7 +311,7 @@
 
     .language-switch {
       margin-left: auto;
-      display: flex;
+      display: none; /* Hidden but not deleted */
       align-items: center;
       gap: 8px;
       font-size: 14px;
@@ -323,7 +323,7 @@
     }
 
     .language-select {
-      padding: 6px 28px 6px 12px;
+      padding: 6px 32px 6px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #fff;
@@ -332,6 +332,7 @@
       color: var(--text);
       appearance: none;
       position: relative;
+      min-width: 140px;
       background-image: linear-gradient(45deg, transparent 50%, var(--subtext) 50%), linear-gradient(135deg, var(--subtext) 50%, transparent 50%);
       background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
       background-size: 6px 6px, 6px 6px;
@@ -365,20 +366,32 @@
   <header>
     <div class="nav">
       <div class="brand">
-        <img src="pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
+        <img src="./pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
         <span data-i18n="brand.name">Black Image</span>
       </div>
       <div class="language-switch">
         <label for="languageSelect" data-i18n="ui.languageLabel">Language</label>
         <select id="languageSelect" class="language-select" aria-label="Language selector">
-          <option value="en" selected>🇺🇸 EN</option>
+          <option value="en" selected>🇺🇸 English</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="uk">🇺🇦 Українська</option>
+          <option value="pl">🇵🇱 Polski</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="tr">🇹🇷 Türkçe</option>
+          <option value="pt">🇵🇹 Português</option>
+          <option value="sv">🇸🇪 Svenska</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="ms">🇲🇾 Malay</option>
+          <option value="ko">🇰🇷 한국어</option>
         </select>
       </div>
     </div>
   </header>
   <main>
     <section id="generator">
-      <h1 data-i18n="hero.title">Black Image Generator</h1>
+      <h1 data-i18n="hero.title">Black Image Download</h1>
       <p class="hero-lede" data-i18n="hero.subtitle">
         Choose the resolution you need, preview instantly, and download a studio-grade black background with a single click.
       </p>
@@ -520,8 +533,8 @@
     <div class="footer-inner">
       <span data-i18n="footer.brand">Black Image</span>
       <div class="footer-links">
-        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="user-agreement.html" data-i18n="footer.terms">User Agreement</a>
+        <a href="../privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="../user-agreement.html" data-i18n="footer.terms">User Agreement</a>
       </div>
       <small>&copy; <span id="year"></span> Black Image</small>
     </div>
@@ -644,6 +657,29 @@
     yearSpan.textContent = new Date().getFullYear();
     initializeDefaults();
     updatePreview();
+
+    // 语言切换功能
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/').filter(p => p);
+        
+        // 构建新路径
+        let newPath = '/' + selectedLang;
+        if (pathParts.length > 1) {
+          // 保留除语言代码外的其他路径部分
+          newPath += '/' + pathParts.slice(1).join('/');
+        } else {
+          newPath += '/';
+        }
+        
+        // 保留查询参数
+        const queryString = window.location.search;
+        window.location.href = newPath + queryString;
+      });
+    }
   </script>
 </body>
 </html>
