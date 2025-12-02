@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>White Image | Free Pure White Background Generator</title>
+  <title>Yellow Screen | Click to Fullscreen - Free Yellow Screen Display</title>
   <link rel="icon" type="image/x-icon" href="./pic/logo.ico" />
   <link rel="shortcut icon" type="image/x-icon" href="./pic/logo.ico" />
   <link rel="apple-touch-icon" href="./pic/logo.png" />
-  <meta name="description" content="White Image - 100% Free Forever! Download pure white image backgrounds instantly, no login required. Perfect for product photography, clean designs, medical presentations, and minimalist aesthetics. White Image generator supports all sizes: 480p, 720p, 1080p, 2K, 4K, 8K and custom dimensions." />
-  <meta name="keywords" content="White Image, white image download, pure white background, white wallpaper generator, white png 4k, white image 1080p, free white screen, white background for photography" />
-  <link rel="canonical" href="https://blackimage.online/white-image.html" />
-  <meta property="og:title" content="White Image | Free Pure White Background Generator" />
-  <meta property="og:description" content="White Image - 100% Free Forever! Download pure white image backgrounds instantly, no login required. Perfect for product photography, clean designs, medical presentations, and minimalist aesthetics." />
-  <meta property="og:url" content="https://blackimage.online/white-image.html" />
+  <meta name="description" content="Yellow Screen - Click the preview area to instantly fullscreen display. 100% free, no login required. Perfect for presentations, video production, testing, and more. Fullscreen yellow screen with one click!" />
+  <meta name="keywords" content="Yellow Screen, fullscreen yellow screen, click to fullscreen, yellow screen display, fullscreen display, presentation screen, video production screen, free yellow screen" />
+  <link rel="canonical" href="https://blackimage.online/yellow-screen.html" />
+  <meta property="og:title" content="Yellow Screen | Click to Fullscreen - Free Yellow Screen Display" />
+  <meta property="og:description" content="Yellow Screen - Click the preview area to instantly fullscreen display. 100% free, no login required. Perfect for presentations, video production, testing, and more. Fullscreen yellow screen with one click!" />
+  <meta property="og:url" content="https://blackimage.online/yellow-screen.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -169,15 +169,69 @@
       position: relative;
       overflow: hidden;
       border: 1px solid var(--border);
+      cursor: pointer;
     }
 
     .preview-black {
       position: absolute;
       inset: 0;
       margin: auto;
-      background: #FFFFFF;
+      background: #FFFF00;
       border-radius: 6px;
       transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+    }
+
+    .fullscreen-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      color: #ffffff;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .preview-box:hover .fullscreen-icon {
+      opacity: 1;
+    }
+
+    .preview-box.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      border-radius: 0;
+      border: none;
+      background-image: none;
+      background: transparent;
+      z-index: 9999;
+      cursor: none;
+    }
+
+    .preview-box.fullscreen .preview-black {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      cursor: none;
+      margin: 0;
+      inset: 0;
+    }
+
+    .preview-box.fullscreen .fullscreen-icon {
+      display: none;
+    }
+
+    /* 全屏时隐藏鼠标光标 */
+    body.fullscreen-mode {
+      cursor: none;
     }
 
     .controls form {
@@ -683,10 +737,10 @@
     <div class="nav">
       <div class="nav-links">
         <a href="./index.html" class="brand" style="text-decoration: none; color: inherit;">
-          <img src="./pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
-          <span data-i18n="brand.name">Black Image</span>
-        </a>
-        <a href="./black-screen.html" class="nav-link">Pure Screen</a>
+        <img src="./pic/logo.ico" alt="Black Screen Logo" class="brand-logo" />
+        <span data-i18n="brand.name">Black Image</span>
+      </a>
+        <a href="./black-screen.html" class="nav-link active">Pure Screen</a>
       </div>
       <div class="language-switch">
         <label for="languageSelect" data-i18n="ui.languageLabel">Language</label>
@@ -710,22 +764,22 @@
   </header>
   <main>
     <section id="generator">
-      <h1 data-i18n="hero.title">White Image Download</h1>
+      <h1 data-i18n="hero.title">Yellow Screen - Click to Fullscreen</h1>
       <p class="hero-lede" data-i18n="hero.subtitle">
-        Create pristine white backgrounds for product photography, clean designs, and professional presentations. Download high-quality white images in any size instantly.
+        Click anywhere on the preview area to instantly fullscreen display. Perfect for presentations, video production, testing, and creating bright, distraction-free environments.
       </p>
       <div class="preview-panel">
         <div class="preview-stack">
-          <div class="preview-box" aria-live="polite">
+          <div class="preview-box" id="previewBox" aria-live="polite">
             <div class="preview-black" id="previewBlack"></div>
+            <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <button type="button" class="download-btn" id="downloadBtn" data-i18n="hero.download">
-            Download Image
-          </button>
+          
         </div>
         <div class="controls">
-          <form id="resolutionForm">
-            <div class="color-section">
+          <div class="color-section">
               <label class="section-label">Color</label>
               <div class="color-options">
                 <div class="color-row">
@@ -764,143 +818,93 @@
                 </div>
               </div>
             </div>
-            <div class="resolution-section">
-              <label class="section-label">Resolution</label>
-              <div class="resolution-options" role="radiogroup" aria-label="Available resolutions">
-              <label>
-                <input type="radio" name="resolution" value="640x480" />
-                <span>480p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="1280x720" />
-                <span>720p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="1920x1080" checked />
-                <span>1080p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="2560x1440" />
-                <span>2K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="4096x2160" />
-                <span>4K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="7680x4320" />
-                <span>8K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="custom" id="customRadio" />
-                <span>Custom</span>
-              </label>
-              </div>
-            </div>
-            <div class="custom-inputs" id="customInputs">
-              <label>
-                <span>Width (px)</span>
-                <input type="number" id="customWidth" min="16" max="12000" placeholder="e.g. 3000" />
-              </label>
-              <label>
-                <span>Height (px)</span>
-                <input type="number" id="customHeight" min="16" max="12000" placeholder="e.g. 2000" />
-              </label>
-            </div>
-            <div class="meta-row">
-              <span id="ratioLabel">Aspect ratio: 16:9</span>
-            </div>
-          </form>
-        </div>
-      </div>
+            
     </section>
 
     <section id="use-cases">
-      <h2 data-i18n="usecases.title">Why white backgrounds are essential for professional work</h2>
-      <p data-i18n="usecases.subtitle">A pure White Image provides the perfect neutral canvas for product photography, e-commerce listings, medical documentation, and minimalist design projects.</p>
+      <h2 data-i18n="usecases.title">Bright yellow screen for attention and energy</h2>
+      <p data-i18n="usecases.subtitle">Yellow screen commands attention and creates high energy. Perfect for highlighting important information, creating cheerful environments, and maintaining high visibility.</p>
       <div class="usecase-stack">
         <article class="usecase-block" data-i18n="usecases.card1">
-          <h3>E-commerce &amp; product photography</h3>
-          <p>White backgrounds are the industry standard for product listings on Amazon, eBay, and e-commerce platforms. Create professional product photos that make items stand out.</p>
+          <h3>Attention-grabbing presentations</h3>
+          <p>Yellow screen creates high visibility and energy, perfect for highlighting important information and maintaining audience attention.</p>
           <ul>
-            <li>Remove backgrounds and replace with pure white for consistent product catalogs.</li>
-            <li>Use white backgrounds for jewelry, electronics, and fashion photography.</li>
-            <li>Create clean, distraction-free product images that focus attention on the item.</li>
+            <li>Highlight critical information during presentations.</li>
+            <li>Create high-energy presentation environments.</li>
+            <li>Maintain maximum visibility and attention.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card2">
-          <h3>Medical &amp; scientific documentation</h3>
-          <p>White backgrounds provide the clean, clinical aesthetic required for medical imaging, scientific presentations, and healthcare documentation.</p>
+          <h3>Educational content</h3>
+          <p>Yellow screen is perfect for educational content, learning materials, and creating cheerful, engaging learning environments.</p>
           <ul>
-            <li>Use white backgrounds for medical device photography and documentation.</li>
-            <li>Create clean slides for scientific presentations and research papers.</li>
-            <li>Design professional healthcare marketing materials with pristine white spaces.</li>
+            <li>Create cheerful learning environments for students.</li>
+            <li>Maintain high visibility for educational content.</li>
+            <li>Support engaging and energetic teaching sessions.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card3">
-          <h3>Design &amp; branding professionals</h3>
-          <p>White space is fundamental to minimalist design, luxury branding, and clean aesthetics. Use white backgrounds to create sophisticated, modern designs.</p>
+          <h3>Warning &amp; safety displays</h3>
+          <p>Yellow screen is universally recognized for warnings and safety, making it perfect for safety alerts and important notifications.</p>
           <ul>
-            <li>Design minimalist websites and apps with clean white backgrounds.</li>
-            <li>Create luxury brand materials that emphasize elegance and simplicity.</li>
-            <li>Test typography and color schemes against pure white for maximum contrast.</li>
+            <li>Display safety warnings and important alerts.</li>
+            <li>Create attention-grabbing safety notifications.</li>
+            <li>Support safety training and educational content.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card4">
-          <h3>Print &amp; publishing</h3>
-          <p>White backgrounds are essential for print design, book layouts, and publication materials where clean, readable layouts are crucial.</p>
+          <h3>Creative &amp; artistic projects</h3>
+          <p>Yellow screen brings energy and creativity to artistic projects, design work, and creative presentations.</p>
           <ul>
-            <li>Create print-ready designs with pure white backgrounds for brochures and flyers.</li>
-            <li>Design book covers and interior layouts with clean white spaces.</li>
-            <li>Prepare documents for professional printing with consistent white backgrounds.</li>
+            <li>Create energetic creative work environments.</li>
+            <li>Support artistic projects and design work.</li>
+            <li>Maintain high energy in creative sessions.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card5">
-          <h3>Web development &amp; UI design</h3>
-          <p>White backgrounds form the foundation of modern web design, providing clean canvases for content, improving readability, and creating professional interfaces.</p>
+          <h3>Display testing</h3>
+          <p>Yellow screen helps test yellow color channel accuracy, check for color uniformity, and calibrate displays for bright color representation.</p>
           <ul>
-            <li>Design light-mode interfaces with pure white backgrounds for optimal readability.</li>
-            <li>Create placeholder images for websites and applications during development.</li>
-            <li>Test UI components and layouts against white backgrounds for accessibility compliance.</li>
+            <li>Test yellow color channel accuracy on displays.</li>
+            <li>Check for color uniformity and brightness.</li>
+            <li>Calibrate displays for high visibility settings.</li>
           </ul>
         </article>
-      </div>
-    </section>
+      
 
     <section id="faq">
       <h2 data-i18n="faq.title">FAQ</h2>
       <div class="faq-list">
         <details class="faq-item" open>
-          <summary data-i18n="faq.q1">Is the download really free?</summary>
-          <p data-i18n="faq.a1">Yes. All white image files are generated locally in your browser. There are no credits, accounts, or hidden costs.</p>
+          <summary data-i18n="faq.q1">How do I use the yellow screen fullscreen feature?</summary>
+          <p data-i18n="faq.a1">Click anywhere on the yellow preview area to instantly fullscreen. Perfect for attention-grabbing presentations and high-visibility content. Click again to exit fullscreen mode.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q2">What file format do I get?</summary>
-          <p data-i18n="faq.a2">Downloads are standard PNG files for lossless quality. You can convert them to JPG or WebP using any editor if needed.</p>
+          <summary data-i18n="faq.q2">Why use a yellow screen?</summary>
+          <p data-i18n="faq.a2">Yellow screen commands attention and creates high energy. It's perfect for highlighting important information, creating cheerful environments, and maintaining maximum visibility during presentations.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q3">How accurate is the color?</summary>
-          <p data-i18n="faq.a3">We generate a pure #FFFFFF fill without compression, so the result is true white. Your display calibration may influence what you see, but the file remains pure white.</p>
+          <summary data-i18n="faq.q3">Is yellow screen good for education?</summary>
+          <p data-i18n="faq.a3">Yes! Yellow creates cheerful, engaging learning environments. Yellow screen is perfect for educational content, learning materials, and creating energetic teaching sessions that maintain student attention.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q4">Can I automate downloads?</summary>
-          <p data-i18n="faq.a4">Future API access is on the roadmap. For now you can script downloads by calling the generator from headless browsers or use the open-source code.</p>
+          <summary data-i18n="faq.q4">Can I use yellow screen for warnings?</summary>
+          <p data-i18n="faq.a4">Absolutely! Yellow is universally recognized for warnings and safety. Yellow screen is perfect for displaying safety alerts, important notifications, and creating attention-grabbing warning displays.</p>
         </details>
-      </div>
-    </section>
+      
   </main>
   <footer>
     <div class="footer-inner">
-        <span data-i18n="footer.brand">Black Image</span>
+      <span data-i18n="footer.brand">Black Screen</span>
       <div class="footer-links">
         <a href="./privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
         <a href="./user-agreement.html" data-i18n="footer.terms">User Agreement</a>
       </div>
-      <small>&copy; <span id="year"></span> Black Image</small>
+      <small>&copy; <span id="year"></span> Black Screen</small>
         </div>
     <div class="footer-partner">
       <a href="https://dang.ai/" target="_blank" ><img src="https://cdn.prod.website-files.com/63d8afd87da01fb58ea3fbcb/6487e2868c6c8f93b4828827_dang-badge.png" alt="Dang.ai" style="width: 150px; height: 54px;" width="150" height="54"/></a>
-      <a href="https://startupfa.me/s/black-image?utm_source=blackimage.online" target="_blank"><img src="https://startupfa.me/badges/featured-badge.webp" alt="Black Image - Featured on Startup Fame" width="171" height="54" /></a>
+      <a href="https://startupfa.me/s/black-image?utm_source=blackimage.online" target="_blank"><img src="https://startupfa.me/badges/featured-badge.webp" alt="Black Screen - Featured on Startup Fame" width="171" height="54" /></a>
       <a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-light.svg" alt="Featured on Twelve Tools" width="200" height="54"></a>
       <a href="https://aistage.net" title="AIStage" class="footer-partner-text">AIStage</a>
       <a href="https://www.seewhatnewai.com" target="_blank" class="footer-partner-text">SeeWhat</a>
@@ -908,134 +912,76 @@
   </footer>
 
   <script>
-    const previewBoxWidth = 720;
-    const previewBoxHeight = 405;
-    const preview = document.getElementById('previewBlack');
-    const form = document.getElementById('resolutionForm');
-    const ratioLabel = document.getElementById('ratioLabel');
-    const customInputs = document.getElementById('customInputs');
-    const customWidth = document.getElementById('customWidth');
-    const customHeight = document.getElementById('customHeight');
-    const downloadBtn = document.getElementById('downloadBtn');
     const yearSpan = document.getElementById('year');
-
-    const formatter = new Intl.NumberFormat('en-US');
-    const customInputsWrapper = customInputs;
-
-    function parseResolution(value) {
-      if (value === 'custom') {
-        const width = Number(customWidth.value);
-        const height = Number(customHeight.value);
-        return width > 0 && height > 0 ? { width, height } : null;
-      }
-      const [width, height] = value.split('x').map(Number);
-      return { width, height };
-    }
-
-    function updatePreview() {
-      const selected = form.resolution.value;
-      const size = parseResolution(selected);
-
-      if (!size) {
-        preview.style.width = '0px';
-        preview.style.height = '0px';
-        ratioLabel.textContent = 'Aspect ratio: —';
-        downloadBtn.disabled = true;
-        downloadBtn.style.opacity = 0.6;
-        return;
-      }
-
-      downloadBtn.disabled = false;
-      downloadBtn.style.opacity = 1;
-
-      const { width, height } = size;
-      const ratio = (width / height).toFixed(3);
-      const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
-      const divisor = gcd(width, height);
-      const normalized = `${Math.round(width / divisor)}:${Math.round(height / divisor)}`;
-      ratioLabel.textContent = `Aspect ratio: ${normalized} (${ratio})`;
-
-      const boxRatio = previewBoxWidth / previewBoxHeight;
-      const targetRatio = width / height;
-
-      let displayWidth = previewBoxWidth;
-      let displayHeight = previewBoxHeight;
-
-      if (targetRatio > boxRatio) {
-        displayWidth = previewBoxWidth;
-        displayHeight = previewBoxWidth / targetRatio;
-      } else {
-        displayHeight = previewBoxHeight;
-        displayWidth = previewBoxHeight * targetRatio;
-      }
-
-      preview.style.width = `${displayWidth}px`;
-      preview.style.height = `${displayHeight}px`;
-    }
-
-    function toggleInputsState(isCustom) {
-      customInputsWrapper.classList.toggle('disabled', !isCustom);
-      customWidth.readOnly = !isCustom;
-      customHeight.readOnly = !isCustom;
-    }
-
-    // 更新按钮选中状态
-    function updateButtonStates() {
-      const labels = document.querySelectorAll('.resolution-options label');
-      labels.forEach(label => {
-        const radio = label.querySelector('input[type="radio"]');
-        if (radio && radio.checked) {
-          label.classList.add('selected');
-        } else {
-          label.classList.remove('selected');
-        }
-      });
-    }
-
-    form.addEventListener('change', (event) => {
-      const value = form.resolution.value;
-      const isCustom = value === 'custom';
-      toggleInputsState(isCustom);
-      if (!isCustom) {
-        const size = parseResolution(value);
-        if (size) {
-          customWidth.value = size.width;
-          customHeight.value = size.height;
-        }
-      }
-      updateButtonStates();
-      updatePreview();
-    });
-
-    customWidth.addEventListener('input', updatePreview);
-    customHeight.addEventListener('input', updatePreview);
-
-    downloadBtn.addEventListener('click', async () => {
-      const size = parseResolution(form.resolution.value);
-      if (!size) return;
-      const { width, height } = size;
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = window.selectedColor || '#000000';
-      ctx.fillRect(0, 0, width, height);
-      const link = document.createElement('a');
-      link.download = `image-${width}x${height}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    });
-
-    function initializeDefaults() {
-      toggleInputsState(false);
-      customWidth.value = 1920;
-      customHeight.value = 1080;
-    }
-
     yearSpan.textContent = new Date().getFullYear();
-    initializeDefaults();
-    updateButtonStates();
-    updatePreview();
+
+    // 全屏功能
+    const previewBox = document.getElementById('previewBox');
+    
+    function toggleFullscreen() {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        // 进入全屏
+        if (previewBox.requestFullscreen) {
+          previewBox.requestFullscreen().then(() => {
+            previewBox.classList.add('fullscreen');
+            document.body.classList.add('fullscreen-mode');
+          }).catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else if (previewBox.webkitRequestFullscreen) {
+          previewBox.webkitRequestFullscreen();
+          previewBox.classList.add('fullscreen');
+          document.body.classList.add('fullscreen-mode');
+        } else if (previewBox.msRequestFullscreen) {
+          previewBox.msRequestFullscreen();
+          previewBox.classList.add('fullscreen');
+          document.body.classList.add('fullscreen-mode');
+        }
+      } else {
+        // 退出全屏
+        if (document.exitFullscreen) {
+          document.exitFullscreen().then(() => {
+            previewBox.classList.remove('fullscreen');
+            document.body.classList.remove('fullscreen-mode');
+          }).catch(err => {
+            console.error('Error attempting to exit fullscreen:', err);
+          });
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+          previewBox.classList.remove('fullscreen');
+          document.body.classList.remove('fullscreen-mode');
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+          previewBox.classList.remove('fullscreen');
+          document.body.classList.remove('fullscreen-mode');
+        }
+      }
+    }
+
+    // 点击预览区域进入/退出全屏
+    previewBox.addEventListener('click', toggleFullscreen);
+
+    // 监听全屏状态变化
+    document.addEventListener('fullscreenchange', function() {
+      if (!document.fullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
+
+    document.addEventListener('webkitfullscreenchange', function() {
+      if (!document.webkitFullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
+
+    document.addEventListener('msfullscreenchange', function() {
+      if (!document.msFullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
 
     // 语言切换功能
     const languageSelect = document.getElementById('languageSelect');
@@ -1069,10 +1015,10 @@
         <button type="button" class="color-modal-close" id="colorModalClose">&times;</button>
       </div>
       <div class="color-picker-container">
-        <input type="color" class="color-picker-input" id="colorPicker" value="#FFFFFF" />
+        <input type="color" class="color-picker-input" id="colorPicker" value="#FFFF00" />
         <div class="color-input-group">
           <label>Hex Color:</label>
-          <input type="text" id="colorHexInput" value="#FFFFFF" placeholder="#FFFFFF" maxlength="7" />
+          <input type="text" id="colorHexInput" value="#FFFF00" placeholder="#FFFF00" maxlength="7" />
         </div>
       </div>
       <div class="color-modal-actions">
@@ -1084,7 +1030,7 @@
 
   <script>
     // 颜色选择功能 - 全局变量
-    window.selectedColor = '#FFFFFF';
+    window.selectedColor = '#FFFF00';
     const colorSwatches = document.querySelectorAll('.color-swatch');
     const previewBlack = document.getElementById('previewBlack');
     const colorModal = document.getElementById('colorModal');
@@ -1094,21 +1040,21 @@
     const colorPicker = document.getElementById('colorPicker');
     const colorHexInput = document.getElementById('colorHexInput');
 
-    // 初始化：选中白色
-    document.querySelector('.color-swatch[data-color="#FFFFFF"]').classList.add('selected');
+    // 初始化：选中yellow
+    document.querySelector('.color-swatch[data-color="#FFFF00"]').classList.add('selected');
     updatePreviewColor(); // 初始化预览颜色
 
     // 颜色到页面的映射
     const colorPageMap = {
-      '#000000': 'index.html',
-      '#FFFFFF': 'white-image.html',
-      '#FF0000': 'red-image.html',
-      '#00FF00': 'green-image.html',
-      '#FFA500': 'orange-image.html',
-      '#0000FF': 'blue-image.html',
-      '#FFFF00': 'yellow-image.html',
-      '#FFC0CB': 'pink-image.html',
-      '#800080': 'purple-image.html'
+      '#000000': 'black-screen.html',
+      '#FFFFFF': 'white-screen.html',
+      '#FF0000': 'red-screen.html',
+      '#00FF00': 'green-screen.html',
+      '#FFA500': 'orange-screen.html',
+      '#0000FF': 'blue-screen.html',
+      '#FFFF00': 'yellow-screen.html',
+      '#FFC0CB': 'pink-screen.html',
+      '#800080': 'purple-screen.html'
     };
 
     // 颜色选择器点击事件
@@ -1121,10 +1067,10 @@
           colorModal.classList.add('active');
           colorPicker.value = window.selectedColor;
           colorHexInput.value = window.selectedColor;
-        } else if (colorPageMap[color] && colorPageMap[color] !== 'white-image.html') {
+        } else if (colorPageMap[color] && colorPageMap[color] !== 'yellow-screen.html') {
           // 跳转到对应颜色页面
           window.location.href = colorPageMap[color];
-        } else if (color === '#FFFFFF') {
+        } else if (color === '#FFFF00') {
           // 当前页面的颜色，只更新预览
           window.selectedColor = color;
           updateColorSelection(this);
