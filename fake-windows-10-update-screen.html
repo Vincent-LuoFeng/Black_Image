@@ -153,6 +153,22 @@
       background: #0078d4;
     }
 
+    /* 预览区域的样式 */
+    .preview-update-screen {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      position: relative;
+      background: #0078d4;
+      padding: 0;
+    }
+
+    /* 全屏模式的样式 */
     .windows-update-screen {
       width: 100%;
       height: 100%;
@@ -350,6 +366,37 @@
       transform: translateX(-50%);
       width: 100%;
       text-align: center;
+    }
+
+    /* 预览区域的独立样式 */
+    .preview-update-screen .dots-loader {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 25px;
+    }
+
+    .preview-update-screen .update-content {
+      margin-bottom: 0;
+    }
+
+    .preview-update-screen .update-main-text {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .preview-update-screen .update-warning {
+      font-size: 11px;
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+      position: static;
+      transform: none;
+    }
+
+    /* 预览区域的全屏图标放大 */
+    .preview-update-screen .fullscreen-icon {
+      width: 64px;
+      height: 64px;
     }
 
     .fullscreen-icon {
@@ -742,9 +789,9 @@
       </p>
       <div class="preview-panel">
         <div class="preview-box" id="previewBox">
-          <div class="windows-update-screen" id="updateScreen">
+          <div class="preview-update-screen" id="previewUpdateScreen">
             <div class="dots-loader">
-              <img src="./pic/loading.gif" alt="Loading" />
+              <img id="loadingImage" src="./pic/loading/loading_00020.png" alt="Loading" />
             </div>
             <div class="update-content">
               <div class="update-main-text" id="updateMainText">
@@ -902,15 +949,29 @@
     </div>
   </footer>
 
+  <!-- 全屏模式的独立容器 -->
+  <div class="windows-update-screen" id="fullscreenUpdateScreen" style="display: none;">
+    <div class="dots-loader">
+      <img id="fullscreenLoadingImage" src="./pic/loading/loading_00020.png" alt="Loading" />
+    </div>
+    <div class="update-content">
+      <div class="update-main-text" id="fullscreenMainText">
+        Working on updates <span id="fullscreenPercentage">19%</span> complete.<br>
+        Don't turn off your PC. This will take a while.
+      </div>
+    </div>
+    <div class="update-warning">Your PC may restart several times</div>
+  </div>
+
   <!-- Fullscreen Overlay (fallback) -->
   <div class="fullscreen-overlay" id="fullscreenOverlay">
     <div class="fullscreen-content" id="fullscreenContent">
       <div class="dots-loader">
-        <img src="./pic/loading.gif" alt="Loading" />
+        <img id="fallbackLoadingImage" src="./pic/loading/loading_00020.png" alt="Loading" />
       </div>
       <div class="update-content">
-        <div class="update-main-text" id="fullscreenMainText">
-          Working on updates <span id="fullscreenPercentage">19%</span> complete.<br>
+        <div class="update-main-text" id="fallbackMainText">
+          Working on updates <span id="fallbackPercentage">19%</span> complete.<br>
           Don't turn off your PC. This will take a while.
         </div>
       </div>
@@ -920,7 +981,8 @@
 
   <script>
     const previewBox = document.getElementById('previewBox');
-    const updateScreen = document.getElementById('updateScreen');
+    const previewUpdateScreen = document.getElementById('previewUpdateScreen');
+    const fullscreenUpdateScreen = document.getElementById('fullscreenUpdateScreen');
     const updatePercentage = document.getElementById('updatePercentage');
     const fullscreenOverlay = document.getElementById('fullscreenOverlay');
     const fullscreenContent = document.getElementById('fullscreenContent');
@@ -937,6 +999,40 @@
     let progressInterval = null;
     let isFullscreen = false;
 
+    // Loading 序列图动画
+    let loadingFrame = 20; // 从 loading_00020.png 开始
+    const loadingMinFrame = 20;
+    const loadingMaxFrame = 95;
+    const loadingFPS = 30; // 30帧每秒
+    const loadingInterval = 1000 / loadingFPS;
+
+    function updateLoadingAnimation() {
+      loadingFrame++;
+      if (loadingFrame > loadingMaxFrame) {
+        loadingFrame = loadingMinFrame; // 循环播放
+      }
+      
+      const frameNumber = String(loadingFrame).padStart(5, '0');
+      const imagePath = `./pic/loading/loading_${frameNumber}.png`;
+      
+      const previewLoadingImg = document.getElementById('loadingImage');
+      const fullscreenLoadingImg = document.getElementById('fullscreenLoadingImage');
+      const fallbackLoadingImg = document.getElementById('fallbackLoadingImage');
+      
+      if (previewLoadingImg) {
+        previewLoadingImg.src = imagePath;
+      }
+      if (fullscreenLoadingImg) {
+        fullscreenLoadingImg.src = imagePath;
+      }
+      if (fallbackLoadingImg) {
+        fallbackLoadingImg.src = imagePath;
+      }
+    }
+
+    // 启动 loading 动画
+    const loadingAnimationInterval = setInterval(updateLoadingAnimation, loadingInterval);
+
     // 更新年份
     yearSpan.textContent = new Date().getFullYear();
 
@@ -951,12 +1047,18 @@
     // 更新百分比显示
     function updatePercentageDisplay() {
       const percent = Math.round(currentPercent);
-      const percentageSpan = updatePercentage;
-      if (percentageSpan) {
-        percentageSpan.textContent = `${percent}%`;
+      const previewPercentage = document.getElementById('updatePercentage');
+      const fullscreenPercentage = document.getElementById('fullscreenPercentage');
+      const fallbackPercentage = document.getElementById('fallbackPercentage');
+      
+      if (previewPercentage) {
+        previewPercentage.textContent = `${percent}%`;
       }
       if (fullscreenPercentage) {
         fullscreenPercentage.textContent = `${percent}%`;
+      }
+      if (fallbackPercentage) {
+        fallbackPercentage.textContent = `${percent}%`;
       }
     }
 
@@ -1044,8 +1146,12 @@
       }
       
       try {
-        await requestFullscreen(updateScreen);
-        isFullscreen = true;
+        // 显示全屏容器并进入全屏
+        if (fullscreenUpdateScreen) {
+          fullscreenUpdateScreen.style.display = 'flex';
+          await requestFullscreen(fullscreenUpdateScreen);
+          isFullscreen = true;
+        }
       } catch (err) {
         console.error('Failed to enter fullscreen:', err);
         // 如果全屏API不支持，使用fallback
@@ -1073,6 +1179,10 @@
         if (!isFullscreenActive()) {
           isFullscreen = false;
           fullscreenOverlay.classList.remove('active');
+          // 隐藏全屏容器
+          if (fullscreenUpdateScreen) {
+            fullscreenUpdateScreen.style.display = 'none';
+          }
         } else {
           isFullscreen = true;
         }
@@ -1080,17 +1190,22 @@
     });
 
     // 在全屏模式下，点击屏幕退出全屏
-    updateScreen.addEventListener('click', () => {
-      if (isFullscreenActive()) {
-        exitFullscreen();
-      }
-    });
+    if (fullscreenUpdateScreen) {
+      fullscreenUpdateScreen.addEventListener('click', () => {
+        if (isFullscreenActive()) {
+          exitFullscreen();
+        }
+      });
+    }
 
     // ESC键退出全屏（浏览器默认支持，这里作为备用）
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isFullscreen) {
         exitFullscreen();
         fullscreenOverlay.classList.remove('active');
+        if (fullscreenUpdateScreen) {
+          fullscreenUpdateScreen.style.display = 'none';
+        }
         isFullscreen = false;
       }
     });
