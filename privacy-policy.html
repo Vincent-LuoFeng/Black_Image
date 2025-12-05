@@ -71,6 +71,25 @@
       object-fit: contain;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
     main {
       padding: 48px 24px 80px;
       max-width: var(--max-width);
@@ -164,10 +183,15 @@
 <body>
   <header>
     <div class="nav">
-      <a href="index.html" class="brand">
-        <img src="pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
-        <span>Black Image</span>
-      </a>
+      <div class="nav-links">
+        <a href="index.html" class="brand">
+          <img src="pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
+          <span>Black Image</span>
+        </a>
+        <a href="./black-screen.html" class="nav-link">Black Screen</a>
+        <a href="./fake-windows-10-update-screen.html" class="nav-link">Fake Screen</a>
+        <a href="https://kisskh.art/ai-image-generator" class="nav-link" target="_blank" rel="noopener noreferrer">AI Image</a>
+      </div>
     </div>
   </header>
   <main>

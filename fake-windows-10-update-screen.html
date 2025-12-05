@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fake Windows 10 Update Screen </title>
+  <link rel="icon" type="image/x-icon" href="./pic/logo.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="./pic/logo.ico" />
+  <link rel="apple-touch-icon" href="./pic/logo.png" />
+  <meta name="description" content="Generate fake Windows 10 update screens with customizable progress. Perfect for pranks, presentations, or testing. Free and easy to use." />
+  <meta name="keywords" content="fake windows update, windows 10 update screen, fake update, prank screen" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 1200px;
+      --accent: #3456ff;
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    .brand-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    main {
+      padding: 48px 24px 80px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-top: 8px;
+      color: var(--subtext);
+    }
+
+    .hero-lede {
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .preview-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 720px) minmax(220px, 1fr);
+      gap: 32px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .preview-box {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: #0078d4;
+    }
+
+    .windows-update-screen {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      position: relative;
+      background: #0078d4;
+      padding-top: 30vh;
+    }
+
+    .dots-loader {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dots-loader img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      transform-origin: 0 0;
+      animation: dot-chase-0 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* 6个圆点按60°等角分布，每个圆点有不同的起始角度和动画延迟 */
+    .dot:nth-child(1) {
+      transform: translate(-50%, -50%) rotate(0deg) translate(0, -36px) rotate(0deg);
+      animation-name: dot-chase-0;
+      animation-delay: 0s;
+      animation-duration: 1.6s;
+    }
+
+    .dot:nth-child(2) {
+      transform: translate(-50%, -50%) rotate(60deg) translate(0, -36px) rotate(-60deg);
+      animation-name: dot-chase-60;
+      animation-delay: 0.12s;
+      animation-duration: 1.6s;
+    }
+
+    .dot:nth-child(3) {
+      transform: translate(-50%, -50%) rotate(120deg) translate(0, -36px) rotate(-120deg);
+      animation-name: dot-chase-120;
+      animation-delay: 0.24s;
+      animation-duration: 1.6s;
+    }
+
+    .dot:nth-child(4) {
+      transform: translate(-50%, -50%) rotate(180deg) translate(0, -36px) rotate(-180deg);
+      animation-name: dot-chase-180;
+      animation-delay: 0.36s;
+      animation-duration: 1.6s;
+    }
+
+    .dot:nth-child(5) {
+      transform: translate(-50%, -50%) rotate(240deg) translate(0, -36px) rotate(-240deg);
+      animation-name: dot-chase-240;
+      animation-delay: 0.48s;
+      animation-duration: 1.6s;
+    }
+
+    .dot:nth-child(6) {
+      transform: translate(-50%, -50%) rotate(300deg) translate(0, -36px) rotate(-300deg);
+      animation-name: dot-chase-300;
+      animation-delay: 0.6s;
+      animation-duration: 1.6s;
+    }
+
+    @keyframes dot-chase-0 {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) translate(0, -36px) rotate(0deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) translate(0, -36px) rotate(-180deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) translate(0, -36px) rotate(-360deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes dot-chase-60 {
+      0% {
+        transform: translate(-50%, -50%) rotate(60deg) translate(0, -36px) rotate(-60deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(240deg) translate(0, -36px) rotate(-240deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(420deg) translate(0, -36px) rotate(-420deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes dot-chase-120 {
+      0% {
+        transform: translate(-50%, -50%) rotate(120deg) translate(0, -36px) rotate(-120deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(300deg) translate(0, -36px) rotate(-300deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(480deg) translate(0, -36px) rotate(-480deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes dot-chase-180 {
+      0% {
+        transform: translate(-50%, -50%) rotate(180deg) translate(0, -36px) rotate(-180deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(360deg) translate(0, -36px) rotate(-360deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(540deg) translate(0, -36px) rotate(-540deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes dot-chase-240 {
+      0% {
+        transform: translate(-50%, -50%) rotate(240deg) translate(0, -36px) rotate(-240deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(420deg) translate(0, -36px) rotate(-420deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(600deg) translate(0, -36px) rotate(-600deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes dot-chase-300 {
+      0% {
+        transform: translate(-50%, -50%) rotate(300deg) translate(0, -36px) rotate(-300deg) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(480deg) translate(0, -36px) rotate(-480deg) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(660deg) translate(0, -36px) rotate(-660deg) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    .update-content {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .update-main-text {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .update-warning {
+      font-size: 18px;
+      font-weight: 300;
+      opacity: 0.9;
+      position: absolute;
+      bottom: 15vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+    }
+
+    .fullscreen-icon {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .preview-box:hover .fullscreen-icon {
+      opacity: 1;
+    }
+
+    .fullscreen-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: #fff;
+    }
+
+    .controls form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-group label {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .control-row {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .control-row input {
+      border: none;
+      border-bottom: 1px solid var(--text);
+      background: transparent;
+      padding: 4px 0;
+      font-size: 16px;
+      outline: none;
+      width: auto;
+      min-width: 50px;
+      text-align: left;
+      color: var(--text);
+    }
+
+    .control-row input:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .control-row .unit {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .time-inputs {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .time-input-group {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .time-inputs input {
+      border: none;
+      border-bottom: 1px solid var(--text);
+      background: transparent;
+      padding: 4px 0;
+      font-size: 16px;
+      outline: none;
+      width: 50px;
+      text-align: center;
+    }
+
+    .time-inputs input:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .time-inputs .unit {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .os-options {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .os-option {
+      flex: 1;
+      min-width: 200px;
+      padding: 20px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #fff;
+      text-align: center;
+    }
+
+    .os-option:hover {
+      border-color: var(--accent);
+    }
+
+    .os-option.selected {
+      border-color: var(--accent);
+      border-width: 3px;
+    }
+
+    .os-option h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+    }
+
+    .os-option p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .os-preview {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #0078d4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .fullscreen-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0078d4;
+      z-index: 9999;
+    }
+
+    .fullscreen-overlay.active {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 30vh;
+    }
+
+    .fullscreen-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding-top: 30vh;
+    }
+
+    /* 全屏模式下的样式 */
+    .windows-update-screen:fullscreen,
+    .windows-update-screen:-webkit-full-screen,
+    .windows-update-screen:-moz-full-screen,
+    .windows-update-screen:-ms-fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      background: #0078d4 !important;
+      padding-top: 30vh;
+      justify-content: flex-start;
+    }
+
+    .preview-box:fullscreen,
+    .preview-box:-webkit-full-screen,
+    .preview-box:-moz-full-screen,
+    .preview-box:-ms-fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      border: none;
+      max-width: none;
+      aspect-ratio: auto;
+    }
+
+    footer {
+      padding: 32px 24px;
+      background: #0b0f1c;
+      color: #cbd5f5;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: #cbd5f5;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .preview-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content-block {
+      margin-top: 24px;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: step-counter;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      margin-bottom: 24px;
+      padding-left: 40px;
+      position: relative;
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .steps-list li strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .steps-list li p {
+      margin: 0;
+      color: var(--subtext);
+    }
+
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .use-case-item {
+      padding: 24px;
+      background: var(--bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .use-case-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(52, 86, 255, 0.1);
+    }
+
+    .use-case-item h3 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .use-case-item p {
+      margin: 0;
+      color: var(--subtext);
+      line-height: 1.6;
+    }
+
+    .faq-list {
+      margin-top: 24px;
+    }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--subtext);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 28px;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .os-options {
+        flex-direction: column;
+      }
+
+      .use-cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-list li {
+        padding-left: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-links">
+        <a href="./index.html" class="brand" style="text-decoration: none; color: inherit;">
+          <img src="./pic/logo.ico" alt="Black Image Logo" class="brand-logo" />
+          <span>Black Image</span>
+        </a>
+        <a href="./black-screen.html" class="nav-link">Black Screen</a>
+        <a href="./fake-windows-10-update-screen.html" class="nav-link active">Fake Screen</a>
+        <a href="https://kisskh.art/ai-image-generator" class="nav-link" target="_blank" rel="noopener noreferrer">AI Image</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="generator">
+      <h1>Fake Windows 10 Update Screen</h1>
+      <p class="hero-lede">
+        Click the preview area to display the fake screen in full screen.
+      </p>
+      <div class="preview-panel">
+        <div class="preview-box" id="previewBox">
+          <div class="windows-update-screen" id="updateScreen">
+            <div class="dots-loader">
+              <img src="./pic/loading.gif" alt="Loading" />
+            </div>
+            <div class="update-content">
+              <div class="update-main-text" id="updateMainText">
+                Working on updates <span id="updatePercentage">19%</span> complete.<br>
+                Don't turn off your PC. This will take a while.
+              </div>
+            </div>
+            <div class="update-warning">Your PC may restart several times</div>
+            <div class="fullscreen-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <form id="controlForm">
+            <div class="control-group">
+              <div class="control-row">
+                <span>Start</span>
+                <input type="number" id="startPercent" min="0" max="100" value="10" />
+                <span class="unit">%</span>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="control-row">
+                <span>End</span>
+                <input type="number" id="endPercent" min="0" max="100" value="100" />
+                <span class="unit">%</span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>time required by 1%</label>
+              <div class="time-inputs">
+                <div class="time-input-group">
+                  <input type="number" id="hours" min="0" max="23" value="0" />
+                  <span class="unit">H</span>
+                </div>
+                <div class="time-input-group">
+                  <input type="number" id="minutes" min="0" max="59" value="1" />
+                  <span class="unit">M</span>
+                </div>
+                <div class="time-input-group">
+                  <input type="number" id="seconds" min="0" max="59" value="30" />
+                  <span class="unit">S</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="os-options">
+        <div class="os-option selected" data-os="windows10">
+          <div class="os-preview">Windows 10</div>
+          <h3>Windows 10</h3>
+          <p>Fake Windows 10 update screen</p>
+        </div>
+        <div class="os-option" data-os="windows11">
+          <div class="os-preview" style="background: #000;">Windows 11</div>
+          <h3>Windows 11</h3>
+          <p>Coming soon</p>
+        </div>
+        <div class="os-option" data-os="macos">
+          <div class="os-preview" style="background: #1d1d1f;">Mac OS X</div>
+          <h3>Mac OS X</h3>
+          <p>Coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-use">
+      <h2>How to Use</h2>
+      <div class="content-block">
+        <ol class="steps-list">
+          <li>
+            <strong>Configure Progress Settings</strong>
+            <p>Set the start and end percentage values, and specify how long each 1% increment should take.</p>
+          </li>
+          <li>
+            <strong>Preview the Screen</strong>
+            <p>Watch the fake Windows 10 update screen in the preview area with your configured settings.</p>
+          </li>
+          <li>
+            <strong>Enter Fullscreen Mode</strong>
+            <p>Click on the preview area to display the fake update screen in fullscreen mode.</p>
+          </li>
+          <li>
+            <strong>Exit Fullscreen</strong>
+            <p>Click anywhere on the screen or press the ESC key to exit fullscreen mode.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="use-cases">
+      <h2>Use Cases</h2>
+      <div class="content-block">
+        <div class="use-cases-grid">
+          <div class="use-case-item">
+            <h3>🎭 Pranks & Jokes</h3>
+            <p>Create harmless pranks for friends and family with a realistic Windows update screen.</p>
+          </div>
+          <div class="use-case-item">
+            <h3>📹 Video Production</h3>
+            <p>Use in video content, presentations, or tutorials that require a Windows update screen.</p>
+          </div>
+          <div class="use-case-item">
+            <h3>🧪 Testing & Development</h3>
+            <p>Test user interfaces or applications that need to handle system update scenarios.</p>
+          </div>
+          <div class="use-case-item">
+            <h3>📚 Educational Purposes</h3>
+            <p>Demonstrate Windows update processes in educational settings or training materials.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <div class="content-block">
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>Is this tool safe to use?</h3>
+            <p>Yes, this is a completely safe web-based tool that only displays a fake update screen. It doesn't modify your system or install anything.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I customize the update percentage?</h3>
+            <p>Yes, you can set any start and end percentage values between 0% and 100%, and control the speed of progress updates.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does this actually update Windows?</h3>
+            <p>No, this is purely a visual simulation. It does not perform any actual system updates or modifications to your computer.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I use this offline?</h3>
+            <p>Once the page is loaded, you can use it offline. However, you'll need an internet connection to initially load the page.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Will Windows 11 and Mac OS versions be available?</h3>
+            <p>These features are planned for future updates. Stay tuned for new versions!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span>Black Image</span>
+      <div class="footer-links">
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./user-agreement.html">User Agreement</a>
+      </div>
+      <small>&copy; <span id="year"></span> Black Image</small>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Overlay (fallback) -->
+  <div class="fullscreen-overlay" id="fullscreenOverlay">
+    <div class="fullscreen-content" id="fullscreenContent">
+      <div class="dots-loader">
+        <img src="./pic/loading.gif" alt="Loading" />
+      </div>
+      <div class="update-content">
+        <div class="update-main-text" id="fullscreenMainText">
+          Working on updates <span id="fullscreenPercentage">19%</span> complete.<br>
+          Don't turn off your PC. This will take a while.
+        </div>
+      </div>
+      <div class="update-warning">Your PC may restart several times</div>
+    </div>
+  </div>
+
+  <script>
+    const previewBox = document.getElementById('previewBox');
+    const updateScreen = document.getElementById('updateScreen');
+    const updatePercentage = document.getElementById('updatePercentage');
+    const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+    const fullscreenContent = document.getElementById('fullscreenContent');
+    const fullscreenPercentage = document.getElementById('fullscreenPercentage');
+    const startPercentInput = document.getElementById('startPercent');
+    const endPercentInput = document.getElementById('endPercent');
+    const hoursInput = document.getElementById('hours');
+    const minutesInput = document.getElementById('minutes');
+    const secondsInput = document.getElementById('seconds');
+    const osOptions = document.querySelectorAll('.os-option');
+    const yearSpan = document.getElementById('year');
+
+    let currentPercent = 10;
+    let progressInterval = null;
+    let isFullscreen = false;
+
+    // 更新年份
+    yearSpan.textContent = new Date().getFullYear();
+
+    // 计算总时间（毫秒）
+    function getTotalTimeMs() {
+      const hours = parseInt(hoursInput.value) || 0;
+      const minutes = parseInt(minutesInput.value) || 0;
+      const seconds = parseInt(secondsInput.value) || 0;
+      return (hours * 3600 + minutes * 60 + seconds) * 1000;
+    }
+
+    // 更新百分比显示
+    function updatePercentageDisplay() {
+      const percent = Math.round(currentPercent);
+      const percentageSpan = updatePercentage;
+      if (percentageSpan) {
+        percentageSpan.textContent = `${percent}%`;
+      }
+      if (fullscreenPercentage) {
+        fullscreenPercentage.textContent = `${percent}%`;
+      }
+    }
+
+    // 启动进度
+    function startProgress() {
+      // 清除现有定时器
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
+
+      const startPercent = parseInt(startPercentInput.value) || 0;
+      const endPercent = parseInt(endPercentInput.value) || 100;
+      const timeMs = getTotalTimeMs();
+
+      currentPercent = startPercent;
+      updatePercentageDisplay();
+
+      if (timeMs <= 0) {
+        return;
+      }
+
+      progressInterval = setInterval(() => {
+        if (currentPercent < endPercent) {
+          currentPercent += 1;
+          updatePercentageDisplay();
+        } else {
+          // 到达终点，停止更新
+          clearInterval(progressInterval);
+          progressInterval = null;
+        }
+      }, timeMs);
+    }
+
+    // 监听输入变化
+    startPercentInput.addEventListener('input', () => {
+      currentPercent = parseInt(startPercentInput.value) || 0;
+      updatePercentageDisplay();
+      startProgress();
+    });
+
+    endPercentInput.addEventListener('input', startProgress);
+    hoursInput.addEventListener('input', startProgress);
+    minutesInput.addEventListener('input', startProgress);
+    secondsInput.addEventListener('input', startProgress);
+
+    // 全屏API兼容性处理
+    function requestFullscreen(element) {
+      if (element.requestFullscreen) {
+        return element.requestFullscreen();
+      } else if (element.webkitRequestFullscreen) {
+        return element.webkitRequestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        return element.mozRequestFullScreen();
+      } else if (element.msRequestFullscreen) {
+        return element.msRequestFullscreen();
+      }
+      return Promise.reject('Fullscreen API not supported');
+    }
+
+    function exitFullscreen() {
+      if (document.exitFullscreen) {
+        return document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        return document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        return document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        return document.msExitFullscreen();
+      }
+    }
+
+    function isFullscreenActive() {
+      return !!(document.fullscreenElement || 
+                document.webkitFullscreenElement || 
+                document.mozFullScreenElement || 
+                document.msFullscreenElement);
+    }
+
+    // 点击预览区域进入全屏
+    previewBox.addEventListener('click', async () => {
+      if (isFullscreen) {
+        // 如果已经在全屏，点击退出
+        exitFullscreen();
+        return;
+      }
+      
+      try {
+        await requestFullscreen(updateScreen);
+        isFullscreen = true;
+      } catch (err) {
+        console.error('Failed to enter fullscreen:', err);
+        // 如果全屏API不支持，使用fallback
+        fullscreenOverlay.classList.add('active');
+        isFullscreen = true;
+      }
+    });
+
+    // 点击全屏区域退出全屏（fallback模式）
+    fullscreenOverlay.addEventListener('click', () => {
+      fullscreenOverlay.classList.remove('active');
+      isFullscreen = false;
+    });
+
+    // 监听全屏状态变化
+    const fullscreenChangeEvents = [
+      'fullscreenchange',
+      'webkitfullscreenchange',
+      'mozfullscreenchange',
+      'MSFullscreenChange'
+    ];
+
+    fullscreenChangeEvents.forEach(event => {
+      document.addEventListener(event, () => {
+        if (!isFullscreenActive()) {
+          isFullscreen = false;
+          fullscreenOverlay.classList.remove('active');
+        } else {
+          isFullscreen = true;
+        }
+      });
+    });
+
+    // 在全屏模式下，点击屏幕退出全屏
+    updateScreen.addEventListener('click', () => {
+      if (isFullscreenActive()) {
+        exitFullscreen();
+      }
+    });
+
+    // ESC键退出全屏（浏览器默认支持，这里作为备用）
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        exitFullscreen();
+        fullscreenOverlay.classList.remove('active');
+        isFullscreen = false;
+      }
+    });
+
+    // OS选项切换
+    osOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const os = option.getAttribute('data-os');
+        if (os === 'windows11' || os === 'macos') {
+          // 占位，后续实现
+          return;
+        }
+        
+        // 移除所有选中状态
+        osOptions.forEach(opt => opt.classList.remove('selected'));
+        // 添加选中状态
+        option.classList.add('selected');
+      });
+    });
+
+    // 初始化
+    startProgress();
+  </script>
+</body>
+</html>
+
