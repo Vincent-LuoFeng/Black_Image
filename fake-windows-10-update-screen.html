@@ -999,39 +999,156 @@
     let progressInterval = null;
     let isFullscreen = false;
 
-    // Loading 序列图动画
+    // Loading 序列图动画 - 优化版本
     let loadingFrame = 20; // 从 loading_00020.png 开始
     const loadingMinFrame = 20;
     const loadingMaxFrame = 95;
     const loadingFPS = 30; // 30帧每秒
-    const loadingInterval = 1000 / loadingFPS;
+    const frameTime = 1000 / loadingFPS; // 每帧的时间（毫秒）
+    
+    // 预加载的图片缓存
+    const loadingImageCache = {};
+    let loadingImagesLoaded = 0;
+    const totalLoadingFrames = loadingMaxFrame - loadingMinFrame + 1;
+    let loadingAnimationRunning = false;
+    let loadingAnimationRequestId = null;
+    let lastLoadingFrameTime = 0;
 
-    function updateLoadingAnimation() {
-      loadingFrame++;
-      if (loadingFrame > loadingMaxFrame) {
-        loadingFrame = loadingMinFrame; // 循环播放
+    // 预加载所有序列帧图片（渐进式加载）
+    function preloadLoadingImages() {
+      return new Promise((resolve) => {
+        let loadedCount = 0;
+        const minFramesToStart = 10; // 至少加载10帧后就开始动画
+        let animationStarted = false;
+        
+        // 加载单张图片的函数
+        function loadFrame(frame) {
+          const frameNumber = String(frame).padStart(5, '0');
+          const imagePath = `./pic/loading/loading_${frameNumber}.png`;
+          const img = new Image();
+          
+          img.onload = () => {
+            loadingImageCache[frame] = img;
+            loadedCount++;
+            loadingImagesLoaded = loadedCount;
+            
+            // 加载了足够帧数后，立即启动动画（不等待全部加载完成）
+            if (!animationStarted && loadedCount >= minFramesToStart) {
+              animationStarted = true;
+              startLoadingAnimation();
+            }
+            
+            // 所有图片加载完成
+            if (loadedCount === totalLoadingFrames) {
+              if (!animationStarted) {
+                animationStarted = true;
+                startLoadingAnimation();
+              }
+              resolve();
+            }
+          };
+          
+          img.onerror = () => {
+            console.warn(`Failed to load frame ${frame}`);
+            loadedCount++;
+            if (loadedCount === totalLoadingFrames) {
+              if (!animationStarted) {
+                animationStarted = true;
+                startLoadingAnimation();
+              }
+              resolve();
+            }
+          };
+          
+          img.src = imagePath;
+        }
+        
+        // 优先加载前几帧，然后加载其余帧
+        for (let frame = loadingMinFrame; frame <= loadingMaxFrame; frame++) {
+          loadFrame(frame);
+        }
+      });
+    }
+
+    // 使用 requestAnimationFrame 更新动画
+    function updateLoadingAnimation(currentTime) {
+      if (!loadingAnimationRunning) return;
+      
+      // 控制帧率
+      if (currentTime - lastLoadingFrameTime >= frameTime) {
+        loadingFrame++;
+        if (loadingFrame > loadingMaxFrame) {
+          loadingFrame = loadingMinFrame; // 循环播放
+        }
+        
+        // 从缓存中获取已加载的图片
+        let cachedImg = loadingImageCache[loadingFrame];
+        
+        // 如果当前帧还没加载，尝试使用相邻的已加载帧（避免卡顿）
+        if (!cachedImg) {
+          // 向前查找已加载的帧
+          for (let offset = 1; offset <= 5 && !cachedImg; offset++) {
+            let checkFrame = loadingFrame - offset;
+            if (checkFrame < loadingMinFrame) checkFrame = loadingMaxFrame - (loadingMinFrame - checkFrame - 1);
+            cachedImg = loadingImageCache[checkFrame];
+          }
+          // 如果向前找不到，向后查找
+          if (!cachedImg) {
+            for (let offset = 1; offset <= 5 && !cachedImg; offset++) {
+              let checkFrame = loadingFrame + offset;
+              if (checkFrame > loadingMaxFrame) checkFrame = loadingMinFrame + (checkFrame - loadingMaxFrame - 1);
+              cachedImg = loadingImageCache[checkFrame];
+            }
+          }
+        }
+        
+        if (cachedImg) {
+          const previewLoadingImg = document.getElementById('loadingImage');
+          const fullscreenLoadingImg = document.getElementById('fullscreenLoadingImage');
+          const fallbackLoadingImg = document.getElementById('fallbackLoadingImage');
+          
+          // 直接使用已加载图片的src，避免重新加载
+          const imageSrc = cachedImg.src;
+          
+          if (previewLoadingImg && previewLoadingImg.src !== imageSrc) {
+            previewLoadingImg.src = imageSrc;
+          }
+          if (fullscreenLoadingImg && fullscreenLoadingImg.src !== imageSrc) {
+            fullscreenLoadingImg.src = imageSrc;
+          }
+          if (fallbackLoadingImg && fallbackLoadingImg.src !== imageSrc) {
+            fallbackLoadingImg.src = imageSrc;
+          }
+        }
+        
+        lastLoadingFrameTime = currentTime;
       }
       
-      const frameNumber = String(loadingFrame).padStart(5, '0');
-      const imagePath = `./pic/loading/loading_${frameNumber}.png`;
-      
-      const previewLoadingImg = document.getElementById('loadingImage');
-      const fullscreenLoadingImg = document.getElementById('fullscreenLoadingImage');
-      const fallbackLoadingImg = document.getElementById('fallbackLoadingImage');
-      
-      if (previewLoadingImg) {
-        previewLoadingImg.src = imagePath;
-      }
-      if (fullscreenLoadingImg) {
-        fullscreenLoadingImg.src = imagePath;
-      }
-      if (fallbackLoadingImg) {
-        fallbackLoadingImg.src = imagePath;
-      }
+      loadingAnimationRequestId = requestAnimationFrame(updateLoadingAnimation);
     }
 
     // 启动 loading 动画
-    const loadingAnimationInterval = setInterval(updateLoadingAnimation, loadingInterval);
+    function startLoadingAnimation() {
+      if (loadingAnimationRunning) return;
+      
+      loadingAnimationRunning = true;
+      lastLoadingFrameTime = performance.now();
+      loadingAnimationRequestId = requestAnimationFrame(updateLoadingAnimation);
+    }
+
+    // 停止 loading 动画
+    function stopLoadingAnimation() {
+      loadingAnimationRunning = false;
+      if (loadingAnimationRequestId) {
+        cancelAnimationFrame(loadingAnimationRequestId);
+        loadingAnimationRequestId = null;
+      }
+    }
+
+    // 预加载图片并启动动画（动画会在加载足够帧数后自动启动）
+    preloadLoadingImages().then(() => {
+      console.log(`Loaded ${loadingImagesLoaded}/${totalLoadingFrames} loading frames`);
+    });
 
     // 更新年份
     yearSpan.textContent = new Date().getFullYear();
