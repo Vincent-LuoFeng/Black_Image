@@ -19,6 +19,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- 公共组件样式 -->
+  <link rel="stylesheet" href="./css/common.css" />
   <style>
     :root {
       color-scheme: light;
@@ -43,70 +45,7 @@
       line-height: 1.6;
     }
 
-    header {
-      width: 100%;
-      border-bottom: 1px solid var(--border);
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 100px;
-    }
-
-    .nav-link {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-
-    .nav-link:hover {
-      color: var(--accent);
-    }
-
-    .nav-link.active {
-      color: var(--accent);
-    }
-
-    .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 1px;
-    }
-
-    .brand-logo {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-    }
+    /* 公共组件样式已移至 css/common.css */
 
     main {
       padding: 48px 24px 80px;
@@ -610,64 +549,7 @@
       outline: none;
     }
 
-    footer {
-      padding: 32px 24px;
-      background: #0b0f1c;
-      color: #cbd5f5;
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .footer-links a {
-      color: #cbd5f5;
-      text-decoration: none;
-    }
-
-
-    .language-switch {
-      margin-left: auto;
-      display: none; /* Hidden but not deleted */
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--subtext);
-    }
-
-    .language-switch label {
-      font-weight: 500;
-    }
-
-    .language-select {
-      padding: 6px 32px 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      appearance: none;
-      position: relative;
-      min-width: 140px;
-      background-image: linear-gradient(45deg, transparent 50%, var(--subtext) 50%), linear-gradient(135deg, var(--subtext) 50%, transparent 50%);
-      background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
-      background-size: 6px 6px, 6px 6px;
-      background-repeat: no-repeat;
-      cursor: pointer;
-    }
+    /* 公共组件样式已移至 css/common.css */
 
     @media (max-width: 1024px) {
       .preview-panel {
@@ -692,37 +574,8 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="nav-links">
-        <a href="./index.html" class="brand" style="text-decoration: none; color: inherit;">
-        <img src="./pic/logo.ico" alt="Black Screen Logo" class="brand-logo" />
-        <span data-i18n="brand.name">Black Image</span>
-      </a>
-        <a href="./black-screen.html" class="nav-link active">Black Screen</a>
-        <a href="./fake-windows-10-update-screen.html" class="nav-link">Fake Screen</a>
-        <a href="https://kisskh.art/ai-image-generator" class="nav-link" target="_blank" rel="noopener noreferrer">AI Image</a>
-      </div>
-      <div class="language-switch">
-        <label for="languageSelect" data-i18n="ui.languageLabel">Language</label>
-        <select id="languageSelect" class="language-select" aria-label="Language selector">
-          <option value="en" selected>🇺🇸 English</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="es">🇪🇸 Español</option>
-          <option value="uk">🇺🇦 Українська</option>
-          <option value="pl">🇵🇱 Polski</option>
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="tr">🇹🇷 Türkçe</option>
-          <option value="pt">🇵🇹 Português</option>
-          <option value="sv">🇸🇪 Svenska</option>
-          <option value="ja">🇯🇵 日本語</option>
-          <option value="ms">🇲🇾 Malay</option>
-          <option value="ko">🇰🇷 한국어</option>
-        </select>
-      </div>
-    </div>
-  </header>
+  <!-- 导航栏占位符，将由 components.js 动态生成 -->
+  <div id="header-placeholder"></div>
   <main>
     <section id="generator">
       <h1 data-i18n="hero.title">Purple Screen - Click to Fullscreen</h1>
@@ -854,20 +707,12 @@
         </details>
       
   </main>
-  <footer>
-    <div class="footer-inner">
-      <span>Black Image</span>
-      <div class="footer-links">
-        <a href="./privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="./user-agreement.html" data-i18n="footer.terms">User Agreement</a>
-      </div>
-      <small>&copy; <span id="year"></span> Black Screen</small>
-        </div>
-  </footer>
+  <!-- 页脚占位符，将由 components.js 动态生成 -->
+  <div id="footer-placeholder"></div>
 
   <script>
-    const yearSpan = document.getElementById('year');
-    yearSpan.textContent = new Date().getFullYear();
+    // yearSpan 现在由 components.js 处理
+    // 年份更新现在由 components.js 处理
 
     // 全屏功能
     const previewBox = document.getElementById('previewBox');
@@ -1109,6 +954,21 @@
     }
 
   </script>
+  
+  <!-- 公共组件系统 -->
+  <script src="./js/config.js"></script>
+  <script src="./js/components.js"></script>
+  <script>
+    // 初始化公共组件（页面加载完成后）
+    document.addEventListener('DOMContentLoaded', function() {
+      initComponents({
+        currentPage: '', // 当前页面不在导航中
+        renderHeader: true,
+        renderFooter: true
+      });
+    });
+  </script>
+  
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>

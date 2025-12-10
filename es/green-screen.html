@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Green Image | Free Pure Green Background Generator</title>
-  <link rel="icon" type="image/x-icon" href="./pic/logo.ico" />
-  <link rel="shortcut icon" type="image/x-icon" href="./pic/logo.ico" />
-  <link rel="apple-touch-icon" href="./pic/logo.png" />
-  <meta name="description" content="Green Image - 100% Free Forever! Download pure green image backgrounds instantly, no login required. Perfect for nature photography, eco-friendly designs, financial presentations, and health & wellness branding. Green Image generator supports all sizes: 480p, 720p, 1080p, 2K, 4K, 8K and custom dimensions." />
-  <meta name="keywords" content="Green Image, green image download, pure green background, green wallpaper generator, green png 4k, green image 1080p, free green screen, green background for nature" />
-  <link rel="canonical" href="https://blackimage.online/green-image.html" />
-  <meta property="og:title" content="Green Image | Free Pure Green Background Generator" />
-  <meta property="og:description" content="Green Image - 100% Free Forever! Download pure green image backgrounds instantly, no login required. Perfect for nature photography, eco-friendly desi..." />
-  <meta property="og:url" content="https://blackimage.online/green-image.html" />
+  <title>Verde Screen | Click to Fullscreen - Free Verde Screen Display</title>
+  <link rel="icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="apple-touch-icon" href="../pic/logo.png" />
+  <meta name="description" content="Verde Screen - Click the preview area to instantly fullscreen display. 100% free, no login required. Perfect for presentations, video production, testing, and more. Fullscreen green screen with one click!" />
+  <meta name="keywords" content="Verde Screen, fullscreen green screen, click to fullscreen, green screen display, fullscreen display, presentation screen, video production screen, free green screen" />
+  <link rel="canonical" href="https://blackimage.online/es/green-screen.html" />
+  <meta property="og:title" content="Verde Screen | Click to Fullscreen - Free Verde Screen Display" />
+  <meta property="og:description" content="Verde Screen - Click the preview area to instantly fullscreen display. 100% free, no login required. Perfect for presentations, video production, testing, and more. Fullscreen green screen with one click!" />
+  <meta property="og:url" content="https://blackimage.online/es/green-screen.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- 公共组件样式 -->
-  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="../css/common.css" />
   <style>
     :root {
       color-scheme: light;
@@ -108,6 +108,7 @@
       position: relative;
       overflow: hidden;
       border: 1px solid var(--border);
+      cursor: pointer;
     }
 
     .preview-black {
@@ -117,6 +118,59 @@
       background: #00FF00;
       border-radius: 6px;
       transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+    }
+
+    .fullscreen-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      color: #ffffff;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .preview-box:hover .fullscreen-icon {
+      opacity: 1;
+    }
+
+    .preview-box.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      border-radius: 0;
+      border: none;
+      background-image: none;
+      background: transparent;
+      z-index: 9999;
+      cursor: none;
+    }
+
+    .preview-box.fullscreen .preview-black {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      cursor: none;
+      margin: 0;
+      inset: 0;
+    }
+
+    .preview-box.fullscreen .fullscreen-icon {
+      display: none;
+    }
+
+    /* 全屏时隐藏鼠标光标 */
+    body.fullscreen-mode {
+      cursor: none;
     }
 
     .controls form {
@@ -524,315 +578,210 @@
   <div id="header-placeholder"></div>
   <main>
     <section id="generator">
-      <h1 data-i18n="hero.title">Green Image Download</h1>
-      <p class="hero-lede" data-i18n="hero.subtitle">Create vibrant green backgrounds for nature photography, eco-friendly designs, financial presentations, and wellness branding. Download fresh green images instantly.</p>
+      <h1 data-i18n="hero.title">Verde Screen - Click to Fullscreen</h1>
+      <p class="hero-lede" data-i18n="hero.subtitle">
+        Haz clic en cualquier parte del área de vista previa para mostrar en pantalla completa al instante. Perfect for presentations, video production, testing, and creating vibrant, distraction-free environments.
+      </p>
       <div class="preview-panel">
         <div class="preview-stack">
-          <div class="preview-box" aria-live="polite">
-            <div class="preview-black" id="previewBlack"></div>
+          <div class="preview-box" id="previewBox" aria-live="polite">
+            <div class="preview-black" id="previewNegro"></div>
+            <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <button type="button" class="download-btn" id="downloadBtn" data-i18n="hero.download">
-            Download Image
-          </button>
+          
         </div>
         <div class="controls">
-          <form id="resolutionForm">
-            <div class="color-section">
-              <label class="section-label">Color</label>
-              <div class="color-options">
-                <div class="color-row">
-                  <button type="button" class="color-swatch" data-color="#000000" style="background-color: #000000;" title="Black">
-                    <span>Black</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 1px solid #e5e7eb;" title="White">
-                    <span>White</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#FF0000" style="background-color: #FF0000;" title="Red">
-                    <span>Red</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#00FF00" style="background-color: #00FF00;" title="Green">
-                    <span>Green</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#FFA500" style="background-color: #FFA500;" title="Orange">
-                    <span>Orange</span>
-                  </button>
-                </div>
-                <div class="color-row">
-                  <button type="button" class="color-swatch" data-color="#0000FF" style="background-color: #0000FF;" title="Blue">
-                    <span>Blue</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#FFFF00" style="background-color: #FFFF00;" title="Yellow">
-                    <span>Yellow</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Pink">
-                    <span>Pink</span>
-                  </button>
-                  <button type="button" class="color-swatch" data-color="#800080" style="background-color: #800080;" title="Purple">
-                    <span>Purple</span>
-                  </button>
-                  <button type="button" class="color-swatch color-other" data-color="other" title="Other">
-                    <span>Other</span>
-                  </button>
-                </div>
+          <div class="color-section">
+            <label class="section-label">Color</label>
+            <div class="color-options">
+              <div class="color-row">
+                <button type="button" class="color-swatch" data-color="#000000" style="background-color: #000000;" title="Negro">
+                  <span>Negro</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 1px solid #e5e7eb;" title="Blanco">
+                  <span>Blanco</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#FF0000" style="background-color: #FF0000;" title="Rojo">
+                  <span>Rojo</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#00FF00" style="background-color: #00FF00;" title="Verde">
+                  <span>Verde</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#FFA500" style="background-color: #FFA500;" title="Naranja">
+                  <span>Naranja</span>
+                </button>
+              </div>
+              <div class="color-row">
+                <button type="button" class="color-swatch" data-color="#0000FF" style="background-color: #0000FF;" title="Azul">
+                  <span>Azul</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#FFFF00" style="background-color: #FFFF00;" title="Amarillo">
+                  <span>Amarillo</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Rosa">
+                  <span>Rosa</span>
+                </button>
+                <button type="button" class="color-swatch" data-color="#800080" style="background-color: #800080;" title="Morado">
+                  <span>Morado</span>
+                </button>
+                <button type="button" class="color-swatch color-other" data-color="other" title="Otro">
+                  <span>Otro</span>
+                </button>
               </div>
             </div>
-            <div class="resolution-section">
-              <label class="section-label">Resolution</label>
-              <div class="resolution-options" role="radiogroup" aria-label="Available resolutions">
-              <label>
-                <input type="radio" name="resolution" value="640x480" />
-                <span>480p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="1280x720" />
-                <span>720p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="1920x1080" checked />
-                <span>1080p</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="2560x1440" />
-                <span>2K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="4096x2160" />
-                <span>4K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="7680x4320" />
-                <span>8K</span>
-              </label>
-              <label>
-                <input type="radio" name="resolution" value="custom" id="customRadio" />
-                <span>Custom</span>
-              </label>
-              </div>
-            </div>
-            <div class="custom-inputs" id="customInputs">
-              <label>
-                <span>Width (px)</span>
-                <input type="number" id="customWidth" min="16" max="12000" placeholder="e.g. 3000" />
-              </label>
-              <label>
-                <span>Height (px)</span>
-                <input type="number" id="customHeight" min="16" max="12000" placeholder="e.g. 2000" />
-              </label>
-            </div>
-            <div class="meta-row">
-              <span id="ratioLabel">Aspect ratio: 16:9</span>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="use-cases">
-      <h2 data-i18n="usecases.title">Why green backgrounds represent growth and harmony</h2>
-      <p data-i18n="usecases.subtitle">Green symbolizes nature, growth, and balance. Use pure green backgrounds to create eco-friendly designs, financial presentations, and health & wellness materials that convey freshness and prosperity.</p>
+      <h2 data-i18n="usecases.title">Calming green screen for focus and natural environments</h2>
+      <p data-i18n="usecases.subtitle">Verde screen creates a calming, natural environment perfect for reducing eye strain, creating peaceful workspaces, and maintaining focus during long sessions.</p>
       <div class="usecase-stack">
         <article class="usecase-block" data-i18n="usecases.card1">
-          <h3>Nature & environmental design</h3>
-          <p>Green backgrounds are perfect for nature photography, environmental campaigns, and eco-friendly branding. Create designs that connect with nature and sustainability.</p>
+          <h3>Eye strain reduction</h3>
+          <p>Verde screen is easier on the eyes than bright colors, making it perfect for extended work sessions and reducing visual fatigue.</p>
           <ul>
-<li>Design environmental campaign materials with vibrant green backgrounds.</li>
-            <li>Create nature photography backgrounds for outdoor and wildlife images.</li>
-            <li>Use green for eco-friendly product packaging and sustainable brand materials.</li>
+            <li>Rojouce eye strain during long computer sessions.</li>
+            <li>Create comfortable viewing environments.</li>
+            <li>Maintain focus without harsh brightness.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card2">
-          <h3>Financial & business presentations</h3>
-          <p>Green represents money, growth, and prosperity in business contexts. Use green backgrounds for financial reports, investment presentations, and wealth-related designs.</p>
+          <h3>Nature-inspired workspaces</h3>
+          <p>Verde screen brings a natural, calming element to your workspace, promoting relaxation and reducing stress during work.</p>
           <ul>
-<li>Create financial presentation slides with professional green backgrounds.</li>
-            <li>Design investment and banking materials that convey growth and stability.</li>
-            <li>Use green for cryptocurrency and fintech branding and marketing.</li>
+            <li>Create nature-inspired work environments.</li>
+            <li>Promote relaxation and reduce workplace stress.</li>
+            <li>Maintain connection with natural colors.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card3">
-          <h3>Health & wellness industry</h3>
-          <p>Green is associated with health, healing, and wellness. Perfect for medical facilities, wellness centers, and health-related marketing materials.</p>
+          <h3>Health &amp; wellness sessions</h3>
+          <p>Verde screen is perfect for meditation apps, wellness content, and creating peaceful environments for health-related activities.</p>
           <ul>
-<li>Design healthcare and medical facility branding with calming green backgrounds.</li>
-            <li>Create wellness and spa marketing materials that promote relaxation.</li>
-            <li>Use green for organic food and natural product packaging design.</li>
+            <li>Use in meditation and mindfulness apps.</li>
+            <li>Create peaceful backgrounds for wellness content.</li>
+            <li>Support relaxation and stress reduction activities.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card4">
-          <h3>Sports & outdoor recreation</h3>
-          <p>Green backgrounds evoke outdoor activities, sports fields, and athletic energy. Use green for sports branding, outdoor recreation, and active lifestyle designs.</p>
+          <h3>Design &amp; creative work</h3>
+          <p>Verde screen provides a fresh, natural backdrop for design work, creative presentations, and nature-themed projects.</p>
           <ul>
-<li>Create sports team branding and athletic marketing materials with green backgrounds.</li>
-            <li>Design outdoor recreation and adventure travel promotional materials.</li>
-            <li>Use green for golf, tennis, and field sports related designs.</li>
+            <li>Create natural, organic design aesthetics.</li>
+            <li>Use for eco-friendly and nature-themed presentations.</li>
+            <li>Support creative work with calming colors.</li>
           </ul>
         </article>
         <article class="usecase-block" data-i18n="usecases.card5">
-          <h3>Technology & innovation</h3>
-          <p>Green represents "go" and positive status in technology. Use green backgrounds for success indicators, positive feedback, and innovation-focused designs.</p>
+          <h3>Pruebas y calibración de pantalla</h3>
+          <p>Verde screen helps test green color channel accuracy, check for color uniformity, and calibrate displays for natural color representation.</p>
           <ul>
-<li>Design user interface elements with green for success states and positive actions.</li>
-            <li>Create technology branding that emphasizes growth and innovation.</li>
-            <li>Use green for gaming interfaces, energy-efficient tech, and green technology marketing.</li>
+            <li>Test green color channel accuracy on displays.</li>
+            <li>Check for color uniformity and display quality.</li>
+            <li>Calibrate displays for natural color balance.</li>
           </ul>
         </article>
-      </div>
-    </section>
+      
 
     <section id="faq">
-      <h2 data-i18n="faq.title">FAQ</h2>
+      <h2 data-i18n="faq.title">Preguntas Frecuentes</h2>
       <div class="faq-list">
         <details class="faq-item" open>
-          <summary data-i18n="faq.q1">Is the download really free?</summary>
-          <p data-i18n="faq.a1">Yes. All green image files are generated locally in your browser. There are no credits, accounts, or hidden costs.</p>
+          <summary data-i18n="faq.q1">How do I use the green screen fullscreen feature?</summary>
+          <p data-i18n="faq.a1">Click anywhere on the green preview area to instantly fullscreen. Perfect for reducing eye strain and creating calming work environments. Click again to exit fullscreen mode.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q2">What file format do I get?</summary>
-          <p data-i18n="faq.a2">Downloads are standard PNG files for lossless quality. You can convert them to JPG or WebP using any editor if needed.</p>
+          <summary data-i18n="faq.q2">Why use a green screen?</summary>
+          <p data-i18n="faq.a2">Verde screen is easier on the eyes and creates a calming, natural environment. It's perfect for reducing eye strain during long sessions and promoting a peaceful workspace atmosphere.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q3">How accurate is the color?</summary>
-          <p data-i18n="faq.a3">We generate a pure #00FF00 fill without compression, so the result is true green. Your display calibration may influence what you see, but the file remains true green.</p>
+          <summary data-i18n="faq.q3">Is green screen good for eye strain?</summary>
+          <p data-i18n="faq.a3">Yes! Verde is one of the most comfortable colors for extended viewing. Verde screen reduces eye fatigue and creates a more comfortable viewing experience compared to bright white or harsh colors.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q4">Can I automate downloads?</summary>
-          <p data-i18n="faq.a4">Future API access is on the roadmap. For now you can script downloads by calling the generator from headless browsers or use the open-source code.</p>
+          <summary data-i18n="faq.q4">Can I use green screen for meditation?</summary>
+          <p data-i18n="faq.a4">Absolutely! Verde screen creates a natural, calming environment perfect for meditation apps, wellness content, and creating peaceful backgrounds for relaxation activities.</p>
         </details>
-      </div>
-    </section>
+      
   </main>
   <!-- 页脚占位符，将由 components.js 动态生成 -->
   <div id="footer-placeholder"></div>
 
   <script>
-    const previewBoxWidth = 720;
-    const previewBoxHeight = 405;
-    const preview = document.getElementById('previewBlack');
-    const form = document.getElementById('resolutionForm');
-    const ratioLabel = document.getElementById('ratioLabel');
-    const customInputs = document.getElementById('customInputs');
-    const customWidth = document.getElementById('customWidth');
-    const customHeight = document.getElementById('customHeight');
-    const downloadBtn = document.getElementById('downloadBtn');
     // yearSpan 现在由 components.js 处理
-
-    const formatter = new Intl.NumberFormat('en-US');
-    const customInputsWrapper = customInputs;
-
-    function parseResolution(value) {
-      if (value === 'custom') {
-        const width = Number(customWidth.value);
-        const height = Number(customHeight.value);
-        return width > 0 && height > 0 ? { width, height } : null;
-      }
-      const [width, height] = value.split('x').map(Number);
-      return { width, height };
-    }
-
-    function updatePreview() {
-      const selected = form.resolution.value;
-      const size = parseResolution(selected);
-
-      if (!size) {
-        preview.style.width = '0px';
-        preview.style.height = '0px';
-        ratioLabel.textContent = 'Aspect ratio: —';
-        downloadBtn.disabled = true;
-        downloadBtn.style.opacity = 0.6;
-        return;
-      }
-
-      downloadBtn.disabled = false;
-      downloadBtn.style.opacity = 1;
-
-      const { width, height } = size;
-      const ratio = (width / height).toFixed(3);
-      const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
-      const divisor = gcd(width, height);
-      const normalized = `${Math.round(width / divisor)}:${Math.round(height / divisor)}`;
-      ratioLabel.textContent = `Aspect ratio: ${normalized} (${ratio})`;
-
-      const boxRatio = previewBoxWidth / previewBoxHeight;
-      const targetRatio = width / height;
-
-      let displayWidth = previewBoxWidth;
-      let displayHeight = previewBoxHeight;
-
-      if (targetRatio > boxRatio) {
-        displayWidth = previewBoxWidth;
-        displayHeight = previewBoxWidth / targetRatio;
-      } else {
-        displayHeight = previewBoxHeight;
-        displayWidth = previewBoxHeight * targetRatio;
-      }
-
-      preview.style.width = `${displayWidth}px`;
-      preview.style.height = `${displayHeight}px`;
-    }
-
-    function toggleInputsState(isCustom) {
-      customInputsWrapper.classList.toggle('disabled', !isCustom);
-      customWidth.readOnly = !isCustom;
-      customHeight.readOnly = !isCustom;
-    }
-
-    // 更新按钮选中状态
-    function updateButtonStates() {
-      const labels = document.querySelectorAll('.resolution-options label');
-      labels.forEach(label => {
-        const radio = label.querySelector('input[type="radio"]');
-        if (radio && radio.checked) {
-          label.classList.add('selected');
-        } else {
-          label.classList.remove('selected');
-        }
-      });
-    }
-
-    form.addEventListener('change', (event) => {
-      const value = form.resolution.value;
-      const isCustom = value === 'custom';
-      toggleInputsState(isCustom);
-      if (!isCustom) {
-        const size = parseResolution(value);
-        if (size) {
-          customWidth.value = size.width;
-          customHeight.value = size.height;
-        }
-      }
-      updateButtonStates();
-      updatePreview();
-    });
-
-    customWidth.addEventListener('input', updatePreview);
-    customHeight.addEventListener('input', updatePreview);
-
-    downloadBtn.addEventListener('click', async () => {
-      const size = parseResolution(form.resolution.value);
-      if (!size) return;
-      const { width, height } = size;
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = window.selectedColor || '#000000';
-      ctx.fillRect(0, 0, width, height);
-      const link = document.createElement('a');
-      link.download = `image-${width}x${height}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    });
-
-    function initializeDefaults() {
-      toggleInputsState(false);
-      customWidth.value = 1920;
-      customHeight.value = 1080;
-    }
-
     // 年份更新现在由 components.js 处理
-    initializeDefaults();
-    updateButtonStates();
-    updatePreview();
+
+    // 全屏功能
+    const previewBox = document.getElementById('previewBox');
+    
+    function toggleFullscreen() {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        // 进入全屏
+        if (previewBox.requestFullscreen) {
+          previewBox.requestFullscreen().then(() => {
+            previewBox.classList.add('fullscreen');
+            document.body.classList.add('fullscreen-mode');
+          }).catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else if (previewBox.webkitRequestFullscreen) {
+          previewBox.webkitRequestFullscreen();
+          previewBox.classList.add('fullscreen');
+          document.body.classList.add('fullscreen-mode');
+        } else if (previewBox.msRequestFullscreen) {
+          previewBox.msRequestFullscreen();
+          previewBox.classList.add('fullscreen');
+          document.body.classList.add('fullscreen-mode');
+        }
+      } else {
+        // 退出全屏
+        if (document.exitFullscreen) {
+          document.exitFullscreen().then(() => {
+            previewBox.classList.remove('fullscreen');
+            document.body.classList.remove('fullscreen-mode');
+          }).catch(err => {
+            console.error('Error attempting to exit fullscreen:', err);
+          });
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+          previewBox.classList.remove('fullscreen');
+          document.body.classList.remove('fullscreen-mode');
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+          previewBox.classList.remove('fullscreen');
+          document.body.classList.remove('fullscreen-mode');
+        }
+      }
+    }
+
+    // 点击预览区域进入/退出全屏
+    previewBox.addEventListener('click', toggleFullscreen);
+
+    // 监听全屏状态变化
+    document.addEventListener('fullscreenchange', function() {
+      if (!document.fullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
+
+    document.addEventListener('webkitfullscreenchange', function() {
+      if (!document.webkitFullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
+
+    document.addEventListener('msfullscreenchange', function() {
+      if (!document.msFullscreenElement) {
+        previewBox.classList.remove('fullscreen');
+        document.body.classList.remove('fullscreen-mode');
+      }
+    });
 
     // 语言切换功能
     const languageSelect = document.getElementById('languageSelect');
@@ -862,19 +811,19 @@
   <div class="color-modal" id="colorModal">
     <div class="color-modal-content">
       <div class="color-modal-header">
-        <h3>Choose Custom Color</h3>
+        <h3>Elegir Color Personalizado</h3>
         <button type="button" class="color-modal-close" id="colorModalClose">&times;</button>
       </div>
       <div class="color-picker-container">
         <input type="color" class="color-picker-input" id="colorPicker" value="#00FF00" />
         <div class="color-input-group">
-          <label>Hex Color:</label>
+          <label>Color Hex:</label>
           <input type="text" id="colorHexInput" value="#00FF00" placeholder="#00FF00" maxlength="7" />
         </div>
       </div>
       <div class="color-modal-actions">
-        <button type="button" class="color-modal-btn color-modal-btn-secondary" id="colorModalCancel">Cancel</button>
-        <button type="button" class="color-modal-btn color-modal-btn-primary" id="colorModalConfirm">Confirm</button>
+        <button type="button" class="color-modal-btn color-modal-btn-secondary" id="colorModalCancelar">Cancelar</button>
+        <button type="button" class="color-modal-btn color-modal-btn-primary" id="colorModalConfirmar">Confirmar</button>
       </div>
     </div>
   </div>
@@ -883,11 +832,11 @@
     // 颜色选择功能 - 全局变量
     window.selectedColor = '#00FF00';
     const colorSwatches = document.querySelectorAll('.color-swatch');
-    const previewBlack = document.getElementById('previewBlack');
+    const previewNegro = document.getElementById('previewNegro');
     const colorModal = document.getElementById('colorModal');
     const colorModalClose = document.getElementById('colorModalClose');
-    const colorModalCancel = document.getElementById('colorModalCancel');
-    const colorModalConfirm = document.getElementById('colorModalConfirm');
+    const colorModalCancelar = document.getElementById('colorModalCancelar');
+    const colorModalConfirmar = document.getElementById('colorModalConfirmar');
     const colorPicker = document.getElementById('colorPicker');
     const colorHexInput = document.getElementById('colorHexInput');
 
@@ -897,15 +846,15 @@
 
     // 颜色到页面的映射
     const colorPageMap = {
-      '#000000': 'index.html',
-      '#FFFFFF': 'white-image.html',
-      '#FF0000': 'red-image.html',
-      '#00FF00': 'green-image.html',
-      '#FFA500': 'orange-image.html',
-      '#0000FF': 'blue-image.html',
-      '#FFFF00': 'yellow-image.html',
-      '#FFC0CB': 'pink-image.html',
-      '#800080': 'purple-image.html'
+      '#000000': 'black-screen.html',
+      '#FFFFFF': 'white-screen.html',
+      '#FF0000': 'red-screen.html',
+      '#00FF00': 'green-screen.html',
+      '#FFA500': 'orange-screen.html',
+      '#0000FF': 'blue-screen.html',
+      '#FFFF00': 'yellow-screen.html',
+      '#FFC0CB': 'pink-screen.html',
+      '#800080': 'purple-screen.html'
     };
 
     // 颜色选择器点击事件
@@ -918,7 +867,7 @@
           colorModal.classList.add('active');
           colorPicker.value = window.selectedColor;
           colorHexInput.value = window.selectedColor;
-        } else if (colorPageMap[color] && colorPageMap[color] !== 'green-image.html') {
+        } else if (colorPageMap[color] && colorPageMap[color] !== 'green-screen.html') {
           // 跳转到对应颜色页面
           window.location.href = colorPageMap[color];
         } else if (color === '#00FF00') {
@@ -940,7 +889,7 @@
 
     // 更新预览区域颜色
     function updatePreviewColor() {
-      previewBlack.style.backgroundColor = window.selectedColor;
+      previewNegro.style.backgroundColor = window.selectedColor;
     }
 
     // 颜色选择器同步
@@ -970,7 +919,7 @@
     }
 
     colorModalClose.addEventListener('click', closeColorModal);
-    colorModalCancel.addEventListener('click', closeColorModal);
+    colorModalCancelar.addEventListener('click', closeColorModal);
 
     // 点击弹窗外部关闭
     colorModal.addEventListener('click', function(e) {
@@ -980,11 +929,11 @@
     });
 
     // 确认选择自定义颜色
-    colorModalConfirm.addEventListener('click', function() {
+    colorModalConfirmar.addEventListener('click', function() {
       const customColor = colorPicker.value.toUpperCase();
       window.selectedColor = customColor;
       
-      // 更新Other按钮显示自定义颜色
+      // 更新Otro按钮显示自定义颜色
       const otherSwatch = document.querySelector('.color-other');
       otherSwatch.style.backgroundColor = customColor;
       otherSwatch.style.backgroundImage = 'none';
@@ -1008,8 +957,8 @@
   </script>
   
   <!-- 公共组件系统 -->
-  <script src="./js/config.js"></script>
-  <script src="./js/components.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     // 初始化公共组件（页面加载完成后）
     document.addEventListener('DOMContentLoaded', function() {
