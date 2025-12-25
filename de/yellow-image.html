@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gelbes Bild | Kostenloser Reiner Gelber Hintergrund Generator</title>
+  <link rel="icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="apple-touch-icon" href="../pic/logo.png" />
+  <meta name="description" content="Gelbes Bild - 100% Kostenlos Für Immer! Laden Sie sofort reine gelbe Bildhintergründe herunter, keine Anmeldung erforderlich. Perfekt für fröhliche Designs, Warnschilder, kreative Projekte und aufmerksamkeitsstarke Visuals. Der Gelbe Bild Generatoder unterstützt alle Größen: 480p, 720p, 1080p, 2K, 4K, 8K und benutzerdefinierte Abmessungen." />
+  <meta name="keywords" content="Gelb Image, yellow image download, pure yellow background, yellow wallpaper generator, yellow png 4k, yellow image 1080p, free yellow screen, yellow background für design" />
+  <link rel="canonical" href="https://blackimage.online/de/yellow-image.html" />
+  <meta property="og:title" content="Gelbes Bild | Kostenloser Reiner Gelber Hintergrund Generator" />
+  <meta property="og:description" content="Gelbes Bild - 100% Kostenlos Für Immer! Laden Sie sofort reine gelbe Bildhintergründe herunter, keine Anmeldung erforderlich. Perfekt für fröhliche Designs, Warnschilder, kreative Projekte und aufmerksamkeitsstarke Visuals." />
+  <meta property="og:url" content="https://blackimage.online/de/yellow-image.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- 公共组件样式 -->
+  <link rel="stylesheet" href="../css/common.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 1200px;
+      --accent: #3456ff;
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* 公共组件样式已移至 css/common.css */
+
+    main {
+      padding: 48px 24px 80px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-top: 8px;
+      color: var(--subtext);
+    }
+
+    .hero-lede {
+      margin-bottom: 32px;
+      line-height: 1.6;
+      min-height: 3.2em;
+    }
+
+    .preview-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 720px) minmax(220px, 1fr);
+      gap: 32px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .preview-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .preview-box {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background-image: linear-gradient(45deg, #dfe3eb 25%, transparent 25%),
+        linear-gradient(-45deg, #dfe3eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #dfe3eb 75%),
+        linear-gradient(-45deg, transparent 75%, #dfe3eb 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .preview-black {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background: #FFFF00;
+      border-radius: 6px;
+      transition: transform 0.25s ease, width 0.25s ease, height 0.25s ease;
+    }
+
+    .controls form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .color-section {
+      margin-bottom: 8px;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .color-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .color-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .color-swatch {
+      flex: 1;
+      min-width: 0;
+      aspect-ratio: 1;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      position: relative;
+      padding: 0;
+      background: #fff;
+    }
+
+    .color-swatch span {
+      font-size: 10px;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .color-swatch[data-color="#FFFFFF"] span,
+    .color-swatch[data-color="#FFFF00"] span {
+      color: #000;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.05);
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(52, 86, 255, 0.2);
+    }
+
+    .color-swatch.selected {
+      border-color: var(--accent);
+      border-width: 3px;
+      box-shadow: 0 0 0 2px rgba(52, 86, 255, 0.2);
+    }
+
+    .color-other {
+      background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                  linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                  linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                  linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+      background-size: 8px 8px;
+      background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+    }
+
+    .color-other span {
+      color: var(--text);
+      text-shadow: none;
+    }
+
+    /* 颜色选择弹窗 */
+    .color-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .color-modal.active {
+      display: flex;
+    }
+
+    .color-modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.3);
+    }
+
+    .color-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .color-modal-header h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .color-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--subtext);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s ease;
+    }
+
+    .color-modal-close:hover {
+      background: #f3f4f6;
+    }
+
+    .color-picker-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .color-picker-input {
+      width: 100%;
+      height: 60px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+
+    .color-input-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .color-input-group label {
+      font-size: 14px;
+      font-weight: 500;
+      min-width: 80px;
+    }
+
+    .color-input-group input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: monospace;
+    }
+
+    .color-modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .color-modal-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-modal-btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .color-modal-btn-primary:hover {
+      background: #2545d6;
+    }
+
+    .color-modal-btn-secondary {
+      background: #f3f4f6;
+      color: var(--text);
+    }
+
+    .color-modal-btn-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .resolution-section {
+      margin-bottom: 8px;
+    }
+
+    .resolution-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .resolution-options label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      background: #fff;
+      color: var(--text);
+      transition: all 0.2s ease;
+      user-select: none;
+      position: relative;
+    }
+
+    .resolution-options label:hover {
+      border-color: var(--accent);
+      background: #f0f4ff;
+    }
+
+    .resolution-options input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .resolution-options input:checked + span {
+      color: #fff;
+    }
+
+    .resolution-options label:has(input:checked),
+    .resolution-options label.selected {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .custom-inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      transition: opacity 0.2s ease;
+    }
+
+    .custom-inputs.disabled {
+      opacity: 0.5;
+    }
+
+    .custom-inputs label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .custom-inputs input {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .custom-inputs input[readonly] {
+      background: #f3f4f6;
+      color: var(--subtext);
+      cursor: not-allowed;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+      color: var(--subtext);
+      font-size: 14px;
+    }
+
+    .download-btn {
+      min-width: 260px;
+      padding: 14px;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 25px rgba(52, 86, 255, 0.35);
+    }
+
+    .usecase-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .usecase-block {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .usecase-block h3 {
+      margin-bottom: 8px;
+    }
+
+    .usecase-block p {
+      margin-bottom: 12px;
+    }
+
+    .usecase-block ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--subtext);
+    }
+
+    .usecase-block li + li {
+      margin-top: 6px;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 16px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      background: #fff;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* 公共组件样式已移至 css/common.css */
+
+    @media (max-width: 1024px) {
+      .preview-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 28px;
+      }
+
+      .preview-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏占位符，将由 components.js 动态生成 -->
+  <div id="header-placeholder"></div>
+  <main>
+    <section id="generator">
+      <h1 data-i18n="hero.title">Gelbes Bild Herunterladen</h1>
+      <p class="hero-lede" data-i18n="hero.subtitle">Erstellen Sie helle, fröhliche gelbe Hintergründe für fröhliche Designs, Warnschilder und kreative Projekte. Laden Sie lebendige gelbe Bilder sofort herunter.</p>
+      <div class="preview-panel">
+        <div class="preview-stack">
+          <div class="preview-box" aria-live="polite">
+            <div class="preview-black" id="previewBlack"></div>
+          </div>
+          <button type="button" class="download-btn" id="downloadBtn" data-i18n="hero.download">
+            Bild Herunterladen
+          </button>
+        </div>
+        <div class="controls">
+          <form id="resolutionForm">
+            <div class="color-section">
+              <label class="section-label">Farbe</label>
+              <div class="color-options">
+                <div class="color-row">
+                  <button type="button" class="color-swatch" data-color="#000000" style="background-color: #000000;" title="Schwarz">
+                    <span>Schwarz</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 1px solid #e5e7eb;" title="Weiß">
+                    <span>Weiß</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#FF0000" style="background-color: #FF0000;" title="Rot">
+                    <span>Rot</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#00FF00" style="background-color: #00FF00;" title="Grün">
+                    <span>Grün</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#FFA500" style="background-color: #FFA500;" title="Orange">
+                    <span>Orange</span>
+                  </button>
+                </div>
+                <div class="color-row">
+                  <button type="button" class="color-swatch" data-color="#0000FF" style="background-color: #0000FF;" title="Blau">
+                    <span>Blau</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#FFFF00" style="background-color: #FFFF00;" title="Gelb">
+                    <span>Gelb</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Rosa">
+                    <span>Rosa</span>
+                  </button>
+                  <button type="button" class="color-swatch" data-color="#800080" style="background-color: #800080;" title="Lila">
+                    <span>Lila</span>
+                  </button>
+                  <button type="button" class="color-swatch color-other" data-color="other" title="Andere">
+                    <span>Andere</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="resolution-section">
+              <label class="section-label">Auflösung</label>
+              <div class="resolution-options" role="radiogroup" aria-label="Available resolutions">
+              <label>
+                <input type="radio" name="resolution" value="640x480" />
+                <span>480p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="1280x720" />
+                <span>720p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="1920x1080" checked />
+                <span>1080p</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="2560x1440" />
+                <span>2K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="4096x2160" />
+                <span>4K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="7680x4320" />
+                <span>8K</span>
+              </label>
+              <label>
+                <input type="radio" name="resolution" value="custom" id="customRadio" />
+                <span>Benutzerdefiniert</span>
+              </label>
+              </div>
+            </div>
+            <div class="custom-inputs" id="customInputs">
+              <label>
+                <span>Breite (px)</span>
+                <input type="number" id="customWidth" min="16" max="12000" placeholder="e 3000" />
+              </label>
+              <label>
+                <span>Höhe (px)</span>
+                <input type="number" id="customHeight" min="16" max="12000" placeholder="e 2000" />
+              </label>
+            </div>
+            <div class="meta-row">
+              <span id="ratioLabel">Seitenverhältnis: 16:9</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases">
+      <h2 data-i18n="usecases.title">Why yellow backgrounds radiate happiness und energy</h2>
+      <p data-i18n="usecases.subtitle">Gelb ist die Farbe der sunshine, happiness, und optimism. Use pure yellow backgrounds to create fröhliche designs, warning signs, und kreative projects die bring joy und energy.</p>
+      <div class="usecase-stack">
+        <article class="usecase-block" data-i18n="usecases.card1">
+          <h3>Happiness & positive messaging</h3>
+          <p>Gelb backgrounds create feelings of happiness und optimism. Perfekt für positive messaging, fröhliche designs, und brands die want to project joy.</p>
+          <ul>
+<li>Design fröhliche marketing materials und positive brand messaging with yellow backgrounds.</li>
+            <li>Create happy, uplifting social media graphics und content.</li>
+            <li>Use yellow für children's products, toys, und family-friendly branding.</li>
+          </ul>
+        </article>
+        <article class="usecase-block" data-i18n="usecases.card2">
+          <h3>Safety & warning signage</h3>
+          <p>Gelb ist highly visible und used für caution signs und Warnungen. Use yellow backgrounds für Sicherheit signage und attention-grabbing alerts.</p>
+          <ul>
+<li>Create high-visibility warning signs und Sicherheit labels with yellow backgrounds.</li>
+            <li>Design caution indicators und attention-grabbing Sicherheit messages.</li>
+            <li>Use yellow für construction sites, traffic signs, und hazard Warnungen.</li>
+          </ul>
+        </article>
+        <article class="usecase-block" data-i18n="usecases.card3">
+          <h3>Food & beverage industry</h3>
+          <p>Gelb stimuliert appetite und wird mit sunshine und freshness. Perfekt für food photography, restaurant branding, und beverage marketing.</p>
+          <ul>
+<li>Create appetizing food photography backgrounds für breakfast und sunny-day dining.</li>
+            <li>Design packaging für lemon, banana, und other yellow food products.</li>
+            <li>Use yellow für fast food chains und casual dining restaurant branding.</li>
+          </ul>
+        </article>
+        <article class="usecase-block" data-i18n="usecases.card4">
+          <h3>Creative & künstlerische projects</h3>
+          <p>Gelb brings energy und Kreativität to künstlerische projects. Use yellow backgrounds für kreative portfolios, art exhibitions, und innovative designs.</p>
+          <ul>
+<li>Design künstlerische portfolios und kreative presentation materials with vibrant yellow.</li>
+            <li>Create eye-catching event posters und künstlerische exhibition graphics.</li>
+            <li>Use yellow für fashion, art, und kreative industry branding.</li>
+          </ul>
+        </article>
+        <article class="usecase-block" data-i18n="usecases.card5">
+          <h3>Summer & seasonal marketing</h3>
+          <p>Gelb ist die Farbe der summer und sunshine. Use yellow backgrounds für summer campaigns, beach themes, und warm-weather marketing.</p>
+          <ul>
+<li>Create summer-themed marketing materials und seasonal promotions.</li>
+            <li>Design beach und vacation-related graphics with sunny yellow backgrounds.</li>
+            <li>Use yellow für outdooder events, festivals, und warm-weather branding.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 data-i18n="faq.title">FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary data-i18n="faq.q1">Is the download really free?</summary>
+          <p data-i18n="faq.a1">Yes. All yellow image files are generated locally in your browser. There are no credits, accounts, oder hidden costs.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2">What file format do I get?</summary>
+          <p data-i18n="faq.a2">Downloads are standard PNG files für lossless quality. You can convert them to JPG oder WebP using any editoder if needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3">How accurate ist the color?</summary>
+          <p data-i18n="faq.a3">We generate a pure #FFFF00 fill without compression, so the result ist true yellow. Your display calibration may influence what you see, but the file remains true yellow.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4">Can I automate downloads?</summary>
+          <p data-i18n="faq.a4">Future API access ist on the roadmap. Foder now you can script downloads by calling the generatoder from headless browsers oder use the open-source code.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <!-- 页脚占位符，将由 components.js 动态生成 -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    const previewBoxWidth = 720;
+    const previewBoxHeight = 405;
+    const preview = document.getElementById('previewBlack');
+    const form = document.getElementById('resolutionForm');
+    const ratioLabel = document.getElementById('ratioLabel');
+    const customInputs = document.getElementById('customInputs');
+    const customWidth = document.getElementById('customWidth');
+    const customHeight = document.getElementById('customHeight');
+    const downloadBtn = document.getElementById('downloadBtn');
+    // yearSpan 现在由 components.js 处理
+
+    const formatter = new Intl.NumberFormat('en-US');
+    const customInputsWrapper = customInputs;
+
+    function parseResolution(value) {
+      if (value === 'custom') {
+        const width = Number(customWidth.value);
+        const height = Number(customHeight.value);
+        return width > 0 && height > 0 ? { width, height } : null;
+      }
+      const [width, height] = value.split('x').map(Number);
+      return { width, height };
+    }
+
+    function updatePreview() {
+      const selected = form.resolution.value;
+      const size = parseResolution(selected);
+
+      if (!size) {
+        preview.style.width = '0px';
+        preview.style.height = '0px';
+        ratioLabel.textContent = 'Seitenverhältnis: —';
+        downloadBtn.disabled = true;
+        downloadBtn.style.opacity = 0.6;
+        return;
+      }
+
+      downloadBtn.disabled = false;
+      downloadBtn.style.opacity = 1;
+
+      const { width, height } = size;
+      const ratio = (width / height).toFixed(3);
+      const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+      const divisoder = gcd(width, height);
+      const normalized = `${Math.round(width / divisor)}:${Math.round(height / divisor)}`;
+      ratioLabel.textContent = `Seitenverhältnis: ${normalized} (${ratio})`;
+
+      const boxRatio = previewBoxWidth / previewBoxHeight;
+      const targetRatio = width / height;
+
+      let displayWidth = previewBoxWidth;
+      let displayHet = previewBoxHeight;
+
+      if (targetRatio > boxRatio) {
+        displayWidth = previewBoxWidth;
+        displayHet = previewBoxWidth / targetRatio;
+      } else {
+        displayHet = previewBoxHeight;
+        displayWidth = previewBoxHeight * targetRatio;
+      }
+
+      preview.style.width = `${displayWidth}px`;
+      preview.style.height = `${displayHet}px`;
+    }
+
+    function toggleInputsState(isCustom) {
+      customInputsWrapper.classList.toggle('disabled', !isCustom);
+      customWidth.readOnly = !isCustom;
+      customHeight.readOnly = !isCustom;
+    }
+
+    // 更新按钮选中状态
+    function updateButtonStates() {
+      const labels = document.querySelectorAll('.resolution-options label');
+      labels.forEach(label => {
+        const radio = label.querySelector('input[type="radio"]');
+        if (radio && radio.checked) {
+          label.classList.add('selected');
+        } else {
+          label.classList.remove('selected');
+        }
+      });
+    }
+
+    form.addEventListener('change', (event) => {
+      const value = form.resolution.value;
+      const isCustom = value === 'custom';
+      toggleInputsState(isCustom);
+      if (!isCustom) {
+        const size = parseResolution(value);
+        if (size) {
+          customWidth.value = size.width;
+          customHeight.value = size.height;
+        }
+      }
+      updateButtonStates();
+      updatePreview();
+    });
+
+    customWidth.addEventListener('input', updatePreview);
+    customHeight.addEventListener('input', updatePreview);
+
+    downloadBtn.addEventListener('click', async () => {
+      const size = parseResolution(form.resolution.value);
+      if (!size) return;
+      const { width, height } = size;
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = window.selectedColor || '#000000';
+      ctx.fillRect(0, 0, width, height);
+      const link = document.createElement('a');
+      link.download = `image-${width}x${height}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    function initializeDefaults() {
+      toggleInputsState(false);
+      customWidth.value = 1920;
+      customHeight.value = 1080;
+    }
+
+    // 年份更新现在由 components.js 处理
+    initializeDefaults();
+    updateButtonStates();
+    updatePreview();
+
+    // 语言切换功能
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/').filter(p => p);
+        
+        // 构建新路径
+        let newPath = '/' + selectedLang;
+        if (pathParts.length > 1) {
+          // 保留除语言代码外的其他路径部分
+          newPath += '/' + pathParts.slice(1).join('/');
+        } else {
+          newPath += '/';
+        }
+        
+        // 保留查询参数
+        const queryString = window.location.search;
+        window.location.href = newPath + queryString;
+      });
+    }
+  </script>
+
+  <!-- 颜色选择弹窗 -->
+  <div class="color-modal" id="colorModal">
+    <div class="color-modal-content">
+      <div class="color-modal-header">
+        <h3>Benutzerdefinierte Farbe wählen</h3>
+        <button type="button" class="color-modal-close" id="colorModalClose">&times;</button>
+      </div>
+      <div class="color-picker-container">
+        <input type="color" class="color-picker-input" id="colorPicker" value="#FFFF00" />
+        <div class="color-input-group">
+          <label>Hex Farbe:</label>
+          <input type="text" id="colorHexInput" value="#FFFF00" placeholder="#FFFF00" maxlength="7" />
+        </div>
+      </div>
+      <div class="color-modal-actions">
+        <button type="button" class="color-modal-btn color-modal-btn-secondary" id="colorModalCancel">Abbrechen</button>
+        <button type="button" class="color-modal-btn color-modal-btn-primary" id="colorModalConfirm">Bestätigen</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 颜色选择功能 - 全局变量
+    window.selectedColor = '#FFFF00';
+    const colorSwatches = document.querySelectorAll('.color-swatch');
+    const previewBlack = document.getElementById('previewBlack');
+    const colorModal = document.getElementById('colorModal');
+    const colorModalClose = document.getElementById('colorModalClose');
+    const colorModalCancel = document.getElementById('colorModalCancel');
+    const colorModalConfirm = document.getElementById('colorModalConfirm');
+    const colorPicker = document.getElementById('colorPicker');
+    const colorHexInput = document.getElementById('colorHexInput');
+
+    // 初始化：选中yellow
+    document.querySelector('.color-swatch[data-color="#FFFF00"]').classList.add('selected');
+    updatePreviewColor(); // 初始化预览颜色
+
+    // 颜色到页面的映射
+    const colorPageMap = {
+      '#000000': 'index.html',
+      '#FFFFFF': 'white-image.html',
+      '#FF0000': 'red-image.html',
+      '#00FF00': 'green-image.html',
+      '#FFA500': 'orange-image.html',
+      '#0000FF': 'blue-image.html',
+      '#FFFF00': 'yellow-image.html',
+      '#FFC0CB': 'pink-image.html',
+      '#800080': 'purple-image.html'
+    };
+
+    // 颜色选择器点击事件
+    colorSwatches.forEach(swatch => {
+      swatch.addEventListener('click', function() {
+        const color = this.getAttribute('data-color');
+        
+        if (color === 'other') {
+          // 打开颜色选择弹窗
+          colorModal.classList.add('active');
+          colorPicker.value = window.selectedColor;
+          colorHexInput.value = window.selectedColor;
+        } else if (colorPageMap[color] && colorPageMap[color] !== 'yellow-image.html') {
+          // 跳转到对应颜色页面
+          window.location.href = colorPageMap[color];
+        } else if (color === '#FFFF00') {
+          // 当前页面的颜色，只更新预览
+          window.selectedColor = color;
+          updateColorSelection(this);
+          updatePreviewColor();
+        }
+      });
+    });
+
+    // 更新颜色选择状态
+    function updateColorSelection(selectedSwatch) {
+      colorSwatches.forEach(swatch => {
+        swatch.classList.remove('selected');
+      });
+      selectedSwatch.classList.add('selected');
+    }
+
+    // 更新预览区域颜色
+    function updatePreviewColor() {
+      previewBlack.style.backgroundColor = window.selectedColor;
+    }
+
+    // 颜色选择器同步
+    colorPicker.addEventListener('input', function() {
+      colorHexInput.value = this.value.toUpperCase();
+    });
+
+    // Hex输入同步
+    colorHexInput.addEventListener('input', function() {
+      let value = this.value.toUpperCase();
+      // 确保以#开头
+      if (!value.startsWith('#')) {
+        value = '#' + value;
+      }
+      // 验证hex颜色格式
+      if (/^#[0-9A-F]{6}$/i.test(value)) {
+        colorPicker.value = value;
+        this.value = value;
+      } else {
+        this.value = value;
+      }
+    });
+
+    // 关闭弹窗
+    function closeColorModal() {
+      colorModal.classList.remove('active');
+    }
+
+    colorModalClose.addEventListener('click', closeColorModal);
+    colorModalCancel.addEventListener('click', closeColorModal);
+
+    // 点击弹窗外部关闭
+    colorModal.addEventListener('click', function(e) {
+      if (e.target === colorModal) {
+        closeColorModal();
+      }
+    });
+
+    // 确认选择自定义颜色
+    colorModalConfirm.addEventListener('click', function() {
+      const customColoder = colorPicker.value.toUpperCase();
+      window.selectedColor = customColor;
+      
+      // 更新Andere按钮显示自定义颜色
+      const otherSwatch = document.querySelector('.color-other');
+      otherSwatch.style.backgroundColor = customColor;
+      otherSwatch.style.backgroundImage = 'none';
+      otherSwatch.querySelector('span').style.color = getContrastColor(customColor);
+      otherSwatch.querySelector('span').style.textShadow = 'none';
+      
+      updateColorSelection(otherSwatch);
+      updatePreviewColor();
+      closeColorModal();
+    });
+
+    // 获取对比色（用于文字颜色）
+    function getContrastColor(hex) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      return brightness > 128 ? '#000' : '#fff';
+    }
+
+  </script>
+  
+  <!-- 公共组件系统 -->
+  <script src="../js/config.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    // 初始化公共组件（页面加载完成后）
+    document.addEventListener('DOMContentLoaded', function() {
+      initComponents({
+        currentPage: '', // 当前页面不在导航中
+        renderHeader: true,
+        renderFooter: true
+      });
+    });
+  </script>
+  
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
