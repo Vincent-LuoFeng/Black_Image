@@ -986,14 +986,14 @@
         // 如果当前帧还没加载，尝试使用相邻的已加载帧（避免卡顿）
         if (!cachedImg) {
           // 向前查找已加载的帧
-          für (let offset = 1; offset <= 5 && !cachedImg; offset++) {
+          for (let offset = 1; offset <= 5 && !cachedImg; offset++) {
             let checkFrame = loadingFrame - offset;
             if (checkFrame < loadingMinFrame) checkFrame = loadingMaxFrame - (loadingMinFrame - checkFrame - 1);
             cachedImg = loadingImageCache[checkFrame];
           }
           // 如果向前找不到，向后查找
           if (!cachedImg) {
-            für (let offset = 1; offset <= 5 && !cachedImg; offset++) {
+            for (let offset = 1; offset <= 5 && !cachedImg; offset++) {
               let checkFrame = loadingFrame + offset;
               if (checkFrame > loadingMaxFrame) checkFrame = loadingMinFrame + (checkFrame - loadingMaxFrame - 1);
               cachedImg = loadingImageCache[checkFrame];
