@@ -880,8 +880,8 @@
 
   <script>
     const previewBox = document.getElementById('previewBox');
-    const previewUpdateBildschirm = document.getElementById('previewUpdateScreen');
-    const fullscreenUpdateBildschirm = document.getElementById('fullscreenUpdateScreen');
+    const previewUpdateScreen = document.getElementById('previewUpdateScreen');
+    const fullscreenUpdateScreen = document.getElementById('fullscreenUpdateScreen');
     const updatePercentage = document.getElementById('updatePercentage');
     const fullscreenOverlay = document.getElementById('fullscreenOverlay');
     const fullscreenContent = document.getElementById('fullscreenContent');
@@ -923,7 +923,7 @@
         // 加载单张图片的函数
         function loadFrame(frame) {
           const frameNumber = String(frame).padStart(5, '0');
-          const imagePath = `./pic/loading/loading_${frameNumber}.png`;
+          const imagePath = `../pic/loading/loading_${frameNumber}.png`;
           const img = new Image();
           
           img.onload = () => {
@@ -947,7 +947,7 @@
             }
           };
           
-          img.onerroder = () => {
+          img.onerror = () => {
             console.warn(`Failed to load frame ${frame}`);
             loadedCount++;
             if (loadedCount === totalLoadingFrames) {
@@ -963,7 +963,7 @@
         }
         
         // 优先加载前几帧，然后加载其余帧
-        für (let frame = loadingMinFrame; frame <= loadingMaxFrame; frame++) {
+        for (let frame = loadingMinFrame; frame <= loadingMaxFrame; frame++) {
           loadFrame(frame);
         }
       });
@@ -1130,7 +1130,7 @@
       } else if (element.msRequestFullscreen) {
         return element.msRequestFullscreen();
       }
-      return Promise.reject('Fullscreen API not unterstützened');
+      return Promise.reject('Fullscreen API not supported');
     }
 
     function exitFullscreen() {
@@ -1138,8 +1138,8 @@
         return document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
         return document.webkitExitFullscreen();
-      } else if (document.mozAbbrechenFullScreen) {
-        return document.mozAbbrechenFullScreen();
+      } else if (document.mozCancelFullScreen) {
+        return document.mozCancelFullScreen();
       } else if (document.msExitFullscreen) {
         return document.msExitFullscreen();
       }
