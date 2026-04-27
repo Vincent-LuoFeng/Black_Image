@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Black Image</title>
+  <meta name="description" content="Elige un paquete de creditos para la generacion de imagenes con IA." />
+  <link rel="canonical" href="https://blackimage.online/es/pricing.html" />
+  <link rel="icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="../pic/logo.ico" />
+  <link rel="apple-touch-icon" href="../pic/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 1200px;
+      --accent: #3456ff;
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+    main { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px 80px; }
+    .pricing-wrapper { background: var(--card); border-radius: 16px; padding: 40px; box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08); }
+    h1 { margin: 0 0 12px; line-height: 1.2; }
+    .subtitle { margin: 0 0 32px; color: var(--subtext); max-width: 760px; }
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .plan-card { border: 1px solid var(--border); border-radius: 14px; background: #fff; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .plan-card.recommended { border-color: var(--accent); box-shadow: 0 12px 24px rgba(52, 86, 255, 0.18); }
+    .plan-name { margin: 0; font-size: 20px; font-weight: 700; }
+    .plan-price { margin: 0; font-size: 34px; line-height: 1.1; font-weight: 700; }
+    .plan-credits { color: var(--subtext); margin: 0; font-size: 15px; }
+    .plan-meta { margin: 0; color: var(--subtext); font-size: 14px; }
+    .buy-btn { margin-top: 8px; border: none; border-radius: 999px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; padding: 12px 18px; cursor: pointer; text-decoration: none; text-align: center; }
+    .note { margin-top: 24px; color: var(--subtext); font-size: 14px; }
+    @media (max-width: 768px) { .pricing-wrapper { padding: 28px; } }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="pricing-wrapper">
+      <h1>Pricing</h1>
+      <p class="subtitle">Elige el paquete de creditos que mejor se adapta a tu flujo de imagenes con IA.</p>
+
+      <div class="plan-grid">
+        <article class="plan-card">
+          <h2 class="plan-name">Plan Starter</h2>
+          <p class="plan-price">$4.99</p>
+          <p class="plan-credits">100 credits</p>
+          <p class="plan-meta">Ideal para uso ligero y pruebas.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 100 Credits</a>
+        </article>
+
+        <article class="plan-card recommended">
+          <h2 class="plan-name">Plan Pro</h2>
+          <p class="plan-price">$14.99</p>
+          <p class="plan-credits">400 credits</p>
+          <p class="plan-meta">Mejor valor para generacion frecuente.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 400 Credits</a>
+        </article>
+      </div>
+
+      <p class="note">Todos los precios estan en USD.</p>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initComponents({
+        currentPage: 'pricing',
+        renderHeader: true,
+        renderFooter: true
+      });
+    });
+  </script>
+</body>
+</html>

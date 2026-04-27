@@ -26,6 +26,11 @@ const AppConfig = {
       href: 'https://kisskh.art/ai-image-generator',
       external: true,
       key: 'ai-image'
+    },
+    {
+      text: 'Pricing',
+      href: './pricing.html',
+      key: 'pricing'
     }
   ],
 
