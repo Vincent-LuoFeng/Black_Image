@@ -914,13 +914,13 @@
     function preloadLoadingImages() {
       return new Promise((resolve) => {
         let loadedCount = 0;
-        const minFramesToInicio = 10; // 至少加载10帧后就开始动画
-        let animationInicioed = false;
+        const minFramesToStart = 10; // 至少加载10帧后就开始动画
+        let animationStarted = false;
         
         // 加载单张图片的函数
         function loadFrame(frame) {
-          const frameNumber = String(frame).padInicio(5, '0');
-          const imagePath = `./pic/loading/loading_${frameNumber}.png`;
+          const frameNumber = String(frame).padStart(5, '0');
+          const imagePath = `../pic/loading/loading_${frameNumber}.png`;
           const img = new Image();
           
           img.onload = () => {
@@ -929,15 +929,15 @@
             loadingImagesLoaded = loadedCount;
             
             // 加载了足够帧数后，立即启动动画（不等待全部加载完成）
-            if (!animationInicioed && loadedCount >= minFramesToInicio) {
-              animationInicioed = true;
+            if (!animationStarted && loadedCount >= minFramesToStart) {
+              animationStarted = true;
               startLoadingAnimation();
             }
             
             // 所有图片加载完成
             if (loadedCount === totalLoadingFrames) {
-              if (!animationInicioed) {
-                animationInicioed = true;
+              if (!animationStarted) {
+                animationStarted = true;
                 startLoadingAnimation();
               }
               resolve();
@@ -948,8 +948,8 @@
             console.warn(`Failed to load frame ${frame}`);
             loadedCount++;
             if (loadedCount === totalLoadingFrames) {
-              if (!animationInicioed) {
-                animationInicioed = true;
+              if (!animationStarted) {
+                animationStarted = true;
                 startLoadingAnimation();
               }
               resolve();
