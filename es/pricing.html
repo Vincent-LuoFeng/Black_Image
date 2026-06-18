@@ -33,16 +33,20 @@
     .pricing-wrapper { background: var(--card); border-radius: 16px; padding: 40px; box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08); }
     h1 { margin: 0 0 12px; line-height: 1.2; }
     .subtitle { margin: 0 0 32px; color: var(--subtext); max-width: 760px; }
-    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .plan-card { border: 1px solid var(--border); border-radius: 14px; background: #fff; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .plan-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .plan-card { position: relative; border: 1px solid var(--border); border-radius: 14px; background: #fff; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
     .plan-card.recommended { border-color: var(--accent); box-shadow: 0 12px 24px rgba(52, 86, 255, 0.18); }
-    .plan-name { margin: 0; font-size: 20px; font-weight: 700; }
-    .plan-price { margin: 0; font-size: 34px; line-height: 1.1; font-weight: 700; }
-    .plan-credits { color: var(--subtext); margin: 0; font-size: 15px; }
-    .plan-meta { margin: 0; color: var(--subtext); font-size: 14px; }
-    .buy-btn { margin-top: 8px; border: none; border-radius: 999px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; padding: 12px 18px; cursor: pointer; text-decoration: none; text-align: center; }
+    .plan-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+    .plan-badge.value { background: #0f9d58; }
+    .plan-name { margin: 8px 0 0; font-size: 18px; font-weight: 700; }
+    .plan-price { margin: 0; font-size: 32px; line-height: 1.1; font-weight: 700; }
+    .plan-credits { color: var(--text); margin: 0; font-size: 16px; font-weight: 600; }
+    .plan-per-credit { margin: 0; color: var(--subtext); font-size: 13px; }
+    .plan-meta { margin: 0; color: var(--subtext); font-size: 14px; flex: 1; }
+    .buy-btn { margin-top: auto; border: none; border-radius: 999px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; padding: 12px 18px; cursor: pointer; text-decoration: none; text-align: center; }
     .note { margin-top: 24px; color: var(--subtext); font-size: 14px; }
-    @media (max-width: 768px) { .pricing-wrapper { padding: 28px; } }
+    @media (max-width: 1024px) { .plan-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .pricing-wrapper { padding: 28px; } .plan-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -55,19 +59,41 @@
 
       <div class="plan-grid">
         <article class="plan-card">
-          <h2 class="plan-name">Plan Starter</h2>
-          <p class="plan-price">$4.99</p>
-          <p class="plan-credits">100 credits</p>
-          <p class="plan-meta">Ideal para uso ligero y pruebas.</p>
-          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 100 Credits</a>
+          <h2 class="plan-name">Starter</h2>
+          <p class="plan-price">$6.99</p>
+          <p class="plan-credits">140 creditos</p>
+          <p class="plan-per-credit">$0.050 por credito</p>
+          <p class="plan-meta">Perfecto para probar la generacion de imagenes con IA.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 140 creditos</a>
         </article>
 
         <article class="plan-card recommended">
-          <h2 class="plan-name">Plan Pro</h2>
+          <span class="plan-badge">Mas popular</span>
+          <h2 class="plan-name">Pro</h2>
           <p class="plan-price">$14.99</p>
-          <p class="plan-credits">400 credits</p>
-          <p class="plan-meta">Mejor valor para generacion frecuente.</p>
-          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 400 Credits</a>
+          <p class="plan-credits">400 creditos</p>
+          <p class="plan-per-credit">$0.037 por credito</p>
+          <p class="plan-meta">Nuestra opcion favorita para creadores habituales.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 400 creditos</a>
+        </article>
+
+        <article class="plan-card">
+          <h2 class="plan-name">Plus</h2>
+          <p class="plan-price">$29.99</p>
+          <p class="plan-credits">920 creditos</p>
+          <p class="plan-per-credit">$0.033 por credito</p>
+          <p class="plan-meta">Mas creditos para usuarios avanzados y equipos.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 920 creditos</a>
+        </article>
+
+        <article class="plan-card">
+          <span class="plan-badge value">Mejor valor</span>
+          <h2 class="plan-name">Ultimate</h2>
+          <p class="plan-price">$49.99</p>
+          <p class="plan-credits">2.000 creditos</p>
+          <p class="plan-per-credit">$0.025 por credito</p>
+          <p class="plan-meta">Maximos creditos al precio unitario mas bajo.</p>
+          <a class="buy-btn" href="https://kisskh.art/ai-image-generator" target="_blank" rel="noopener noreferrer">Comprar 2.000 creditos</a>
         </article>
       </div>
 
